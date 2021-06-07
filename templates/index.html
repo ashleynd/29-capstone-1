@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="display-4">Picslink</h1>
+
+<h3>An image-sharing community with paths to purchasing options.</h3>
+<p>Register or Login now to get your own feed.</p>
+
+  {% if 'user_id' not in session %}
+    <button><a href="/register">Register</a></button>
+    <button><a href="/login">Login</a></button>
+  {% endif %}
+
+  <!-- {% if 'user_id' in session %}
+    <button><a href="/logout">Logout</a></button>
+    <button><a href="/feed">Feed</a></button>
+  {% endif %} --> 
+
+
+
+{% endblock %}

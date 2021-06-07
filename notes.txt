@@ -1,0 +1,41 @@
+# Authorization: Client-ID: 9b315a3d4a73278
+# Client secret: 6ea5304b64c0ce2d995277b3a125f752a059ca1c
+
+Generate access key:
+https://apidocs.imgur.com/?ref=apilist.fun#f9236628-fd66-4b4a-bf3c-fb65074dd560
+
+create new environment, save, then set as active environment.
+Re-run this token once a month to keep it active.
+
+POST: https://api.imgur.com/oauth2/token
+
+{
+    "access_token": "e5261d5a2af201ef8029fc111c8dd1e9946f43de",
+    "expires_in": 315360000,
+    "token_type": "bearer",
+    "scope": "",
+    "refresh_token": "95521b2f5491787a1bbd28cc173faf3572b096bd",
+    "account_id": 150313308,
+    "account_username": "ashleynd"
+}
+
+Describe exactly what I want the user to do
+Read through ALL Imgur API docs
+Watch Youtube
+Python library
+
+Hardcode in all images onto page, like an album
+
+A for loop that will grab each image that is available from other users.
+
+
+1. `python3 -m venv venv`
+2. `source venv/bin/activate`
+3. `pip install -r requirements.txt`
+4. `createdb playlist-app`
+5. `flask run`
+
+
+https://github.com/Imgur/imgurpython
+
+https://www.youtube.com/watch?v=OiDQu-0-DIA
