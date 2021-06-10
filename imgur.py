@@ -26,6 +26,8 @@ for item in items:
 
 
 
+
+
 # url = "https://api.imgur.com/3/album/300"
 
 # headers = {'Authorization': 'Bearer 3af336150a146a8d15fb0f2717ae78a26a2793fe', 'Content-type': 'application/json'}
