@@ -1,20 +1,13 @@
 import requests
 from imgurpython import ImgurClient
+from secrets import client_id, client_secret, access_token, refresh_token
 
-# If you already have an access/refresh pair in hand
-client_id = '9b315a3d4a73278'
-client_secret = '6ea5304b64c0ce2d995277b3a125f752a059ca1c'
-access_token = 'bf69af937f3e5a129dfa5d0b665f6eefff6e1af2'
-refresh_token = 'a892e7545a3174914f55ecf4b1e210fc78f27f2c'
-
-# Note since access tokens expire after an hour, only the refresh token is required (library handles autorefresh)
 client = ImgurClient(client_id, client_secret, access_token, refresh_token)
 
 # Extracts the items (images) on the front page of Imgur:
-items = client.gallery(section='top', sort='time', page=3, window='week', show_viral=False)
+items = client.gallery(section='hot', sort='viral', page=2, window='week', show_viral=False)
 for item in items:
     print(item.link)
-
     # print(item.title)
     # print(items)
     # jinja for loop to iterate through each one to make a card
@@ -29,8 +22,6 @@ for item in items:
 #         max_views = item.views
 # print(max_item.title)
 # print(max_views)
-
-
 
 
 

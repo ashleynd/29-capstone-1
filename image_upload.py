@@ -34,3 +34,6 @@ if __name__ == "__main__":
 
     print("Image was posted!")
     print("You can find the image here: {0}".format(image['link']))
+
+
+
