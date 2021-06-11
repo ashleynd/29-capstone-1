@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>My Posts</h1>
+
+<div class="row posts-listing">
+
+  {% for post in posts %}
+  <p>{{post.title}}</p>
+  <p>{{post.caption}}</p>
+  <img class="img-thumbnail" src="{{ post.photo_url }}">
+  {% else %}
+  <div class="col-12">No posts yet.</div>
+  {% endfor %}
+
+</div>
+
+<a class="btn btn-primary" href="{{ url_for('add_post') }}">Add a post</a>
+
+{% endblock %}

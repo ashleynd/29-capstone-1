@@ -22,12 +22,13 @@ class AddPostForm(FlaskForm):
     """Form for adding posts."""
 
     title = StringField("Title", validators=[InputRequired()])
-    photo_url = StringField("Photo URL", validators=[Optional(), URL()])
-    caption = TextAreaField("Photo caption", validators=[Optional(), Length(min=10)])
+    photo_url = StringField("Photo URL", validators=[URL()])
+    purchase_url = StringField("Link to where to purchase item (Optional)", validators=[Optional(), URL()])
+    caption = TextAreaField("Photo caption", validators=[Optional()])
 
 class EditPostForm(FlaskForm):
     """Form for editing posts."""
 
     title = StringField("Title", validators=[InputRequired()])
     photo_url = StringField("Photo URL", validators=[Optional(), URL()])
-    caption = TextAreaField("Photo caption", validators=[Optional(), Length(min=10)])
+    caption = TextAreaField("Photo caption", validators=[Optional()])

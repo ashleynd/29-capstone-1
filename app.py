@@ -1,9 +1,13 @@
-
-
 from flask import Flask, render_template, redirect, session, flash, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, db, User, Post
 from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm
+
+import requests
+from werkzeug.wrappers import AuthorizationMixin
+# from imgurpython import ImgurClient
+# from secrets import client_id, client_secret, access_token, refresh_token
+
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql:///picslink"
@@ -16,7 +20,9 @@ connect_db(app)
 db.create_all()
 
 toolbar = DebugToolbarExtension(app)
+# client = ImgurClient(client_id, client_secret, access_token, refresh_token)
 
+# BASE_HTTP_ENDPOINT = https://api.imgur.com/3/
 
 @app.route("/")
 def homepage():
@@ -74,21 +80,42 @@ def login():
 
 @app.route("/feed")
 def feed():
-    """Feed page for logged-in users only."""
-
-    # posts = Post.query.all()
+    """
+    Extracts the items (images) on the front page of Imgur.
+    For logged-in users only.
+    """
+    # url = "https://api.imgur.com/3/gallery/top/time/week/2?showViral=false&mature=false&album_previews=false"
+    # headers = {'Authorization': 'Client-ID 9b315a3d4a73278'}
+    # response = requests.request("GET", url, headers=headers)
+    # print(response)
 
     if "user_id" not in session:
         flash("You must be logged in to view!")
         return redirect("/")
-
-        # alternatively, can return HTTP Unauthorized status:
-        #
-        # from werkzeug.exceptions import Unauthorized
-        # raise Unauthorized()
+    
 
     else:
-        return render_template("feed.html")
+        return render_template("feed.html", feed=feed)
+
+
+
+# @app.route("/feed")
+# def feed():
+#     """Feed page for logged-in users only."""
+
+#     # posts = Post.query.all()
+
+#     if "user_id" not in session:
+#         flash("You must be logged in to view!")
+#         return redirect("/")
+
+#         # alternatively, can return HTTP Unauthorized status:
+#         #
+#         # from werkzeug.exceptions import Unauthorized
+#         # raise Unauthorized()
+
+#     else:
+#         return render_template("feed.html")
 
 @app.route("/favorites")
 def favorites():
@@ -101,16 +128,27 @@ def favorites():
     else:
         return render_template("favorites.html")
 
-@app.route("/myposts")
-def myposts():
-    """Posts page for logged-in users only."""
+@app.route("/buy")
+def purchase_post():
+    """Post with link to purchase."""
 
     if "user_id" not in session:
         flash("You must be logged in to view!")
         return redirect("/")
 
     else:
-        return render_template("myposts.html")
+        return render_template("purchase_post.html")
+
+# @app.route("/myposts")
+# def myposts():
+#     """Posts page for logged-in users only."""
+
+#     if "user_id" not in session:
+#         flash("You must be logged in to view!")
+#         return redirect("/")
+
+#     else:
+#         return render_template("myposts.html")
 
 
 @app.route("/logout")
@@ -134,17 +172,36 @@ def add_post():
     form = AddPostForm()
 
     if form.validate_on_submit():
-        data = {k: v for k, v in form.data.items() if k != "csrf_token"}
-        new_post = Post(**data)
-        # new_post = Post(title=form.title.data, photo_url=form.photo_url.data, caption=form.caption.data)
+        # data = {k: v for k, v in form.data.items() if k != "csrf_token"}
+        # new_post = Post(**data)
+        title = form.title.data
+        photo_url = form.photo_url.data
+        purchase_url = form.purchase_url.data
+        caption = form.caption.data
+
+
+        new_post = Post(title=title, photo_url=photo_url, purchase_url=purchase_url, caption=caption)
         db.session.add(new_post)
         db.session.commit()
         flash(f"{new_post.title} added.")
-        return redirect(url_for('list_posts'))
+        return redirect("/userposts")
 
     else:
         # re-present form for editing
         return render_template("newpost.html", form=form)
+
+
+@app.route("/userposts")
+def my_posts():
+    """Posts page for logged-in users only."""
+
+    if "user_id" not in session:
+        flash("You must be logged in to view!")
+        return redirect("/")
+
+    else:
+        return render_template("my_posts.html")
+
 
 @app.route("/")
 def list_posts():
@@ -153,21 +210,19 @@ def list_posts():
     posts = Post.query.all()
     return render_template("post_list.html", posts=posts)
 
-@app.route("/<int:post_id>", methods=["GET", "POST"])
-def edit_post(post_id):
-    """Edit post."""
 
-    post = Post.query.get_or_404(post_id)
-    form = EditPostForm(obj=post)
 
-    if form.validate_on_submit():
-        post.title = form.title.data
-        post.photo_url = form.photo_url.data
-        post.caption = form.caption.data
-        db.session.commit()
-        flash(f"{post.title} updated.")
-        return redirect('/feed')
+# @app.route('/posts/<int:post_id>/edit', methods=["GET", "POST"])
+# def edit_post(post_id):
+#     """Edit post."""
+#     post = Post.query.get_or_404(pet_id)
+#     form = PetForm(obj=pet)
 
-    else:
-        # failed; re-present form for editing
-        return render_template("edit_newpost.html", form=form, post=post)
+#     if form.validate_on_submit():
+#         pet.notes = form.notes.data
+#         pet.available = form.available.data
+#         pet.photo_url = form.photo_url.data
+#         db.session.commit()
+#         flash(f"{pet.name} updated.")
+#         return redirect(url_for('home_page'))
+#     render_template('edit_pet_form.html', form=form)

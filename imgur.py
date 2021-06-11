@@ -1,16 +1,28 @@
 import requests
+from werkzeug.wrappers import AuthorizationMixin
 from imgurpython import ImgurClient
 from secrets import client_id, client_secret, access_token, refresh_token
 
 client = ImgurClient(client_id, client_secret, access_token, refresh_token)
 
+# url = "https://api.imgur.com/3/gallery/top/time/day/2?showViral=false&mature=false&album_previews=false"
+# headers = {'Authorization': 'Client-ID 9b315a3d4a73278'}
+# response = requests.request("GET", url, headers=headers)
+# print(response)
+
+
+# res = requests.get('https://api.imgur.com/3/gallery/section/sort/window/page?showViral=false&mature=false&album_previews=false', params={'section': 'top', 'sort': 'viral', 'window': 'week', 'page': 3})
+# print(res)
+
+
+
 # Extracts the items (images) on the front page of Imgur:
 items = client.gallery(section='hot', sort='viral', page=2, window='week', show_viral=False)
 for item in items:
-    print(item.link)
+    # print(item.link)
     # print(item.title)
-    # print(items)
-    # jinja for loop to iterate through each one to make a card
+    print(items)
+    # create jinja for loop to iterate through each one to make a card
 
 # Find the image on the front page that has the highest number of views 
 # items = client.gallery()

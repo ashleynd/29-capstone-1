@@ -56,3 +56,22 @@ Youtube videos:
 Part 1: https://www.youtube.com/watch?v=OiDQu-0-DIA 
 Part 2: https://www.youtube.com/watch?v=kDcn_Tn-ti8 
 Part 3: https://www.youtube.com/watch?v=MyCr8kPT3OI
+
+
+An image-sharing community with paths to purchasing options.
+
+Next step:
+Try to make a route in the app to do the same of what I am doing in the terminal.
+Needs 2 functions - one for getting the data and another to insert into the database.
+
+For imgur.py, need to create jinja for loop to iterate through each item to make a card.
+
+TO DO:
+Implement feed.
+Implement flavoriting capabilities.
+Drop and create new table in my db.
+
+in terminal: 
+psql
+\c picslink
+SELECT * FROM posts;

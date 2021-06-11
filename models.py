@@ -69,9 +69,13 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
     photo_url = db.Column(db.Text)
+    purchase_url = db.Column(db.Text)
     caption = db.Column(db.Text)
 
     def image_url(self):
         """Return image for post -- bespoke or generic."""
 
         return self.photo_url or GENERIC_IMAGE
+
+    def __repr__(self):
+        return f"<Post Info: {self.title} {self.photo_url} {self.purchase_url} {self.caption}>"
