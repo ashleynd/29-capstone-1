@@ -31,4 +31,6 @@ class EditPostForm(FlaskForm):
 
     title = StringField("Title", validators=[InputRequired()])
     photo_url = StringField("Photo URL", validators=[Optional(), URL()])
+    purchase_url = StringField("Link to where to purchase item (Optional)", validators=[Optional(), URL()])
     caption = TextAreaField("Photo caption", validators=[Optional()])
+

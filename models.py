@@ -1,19 +1,17 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 
-GENERIC_IMAGE = "https://mylostpetalert.com/wp-content/themes/mlpa-child/images/nophoto.gif"
+GENERIC_IMAGE_URL = "https://bethshalomsynagogue.org/wp-content/uploads/sites/77/2019/07/cancelled-stamp-4-e1562879608638.png"
 
 db = SQLAlchemy()
 
 bcrypt = Bcrypt()
-
 
 def connect_db(app):
     """Connect to database."""
 
     db.app = app
     db.init_app(app)
-
 
 class User(db.Model):
     """Site user."""
@@ -30,6 +28,8 @@ class User(db.Model):
 
     password = db.Column(db.Text, 
                          nullable=False)
+
+    posts = db.relationship('Post', backref='user', cascade='all, delete')
 
     # start_register
     @classmethod
@@ -62,20 +62,28 @@ class User(db.Model):
     # end_authenticate    
 
 class Post(db.Model):
-    """Posts"""
+    """Posts model."""
 
     __tablename__ = "posts"
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
-    photo_url = db.Column(db.Text)
+    # photo_url = db.Column(db.Text)
     purchase_url = db.Column(db.Text)
     caption = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
+    
+    # user = db.relationship('Post', backref='users', cascade="all, delete-orphan")
 
-    def image_url(self):
+
+
+    # u = Post.query.filter_by(title=title).first()
+
+    def photo_url(self):
         """Return image for post -- bespoke or generic."""
-
-        return self.photo_url or GENERIC_IMAGE
+        
+        return self.photo_url or GENERIC_IMAGE_URL
 
     def __repr__(self):
-        return f"<Post Info: {self.title} {self.photo_url} {self.purchase_url} {self.caption}>"
+        return f"<Post Info: {self.id} {self.title} {self.purchase_url} {self.caption} {self.user_id}>"
+

@@ -1,27 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="display-4">Log In</h1>
-<p class="lead">Welcome! Please log in.</p>
+<div class="d-flex justify-content-center">
+  <h1 class="display-4">Log In</h1>
+</div>
 
-<form method="POST">
+<div class="d-flex justify-content-center">
+  <p class="lead">Welcome! Please log in.</p>
+</div>
 
-  {{ form.hidden_tag() }}
-
-  {% for field in form
-  if field.widget.input_type != 'hidden' %}
-  <p>
-    {{ field.label }}
-    {{ field }}
-
-    {% for error in field.errors %}
-    {{ error }}
+<div class="d-flex justify-content-center">
+  <form method="POST">
+  
+    {{ form.hidden_tag() }}
+  
+    {% for field in form
+    if field.widget.input_type != 'hidden' %}
+    <p>
+      {{ field.label }}
+      {{ field }}
+  
+      {% for error in field.errors %}
+      {{ error }}
+      {% endfor %}
+    </p>
     {% endfor %}
-  </p>
-  {% endfor %}
+    
+    
+    <button type="submit">Log In</button>
+  
+  </form>
 
-  <button type="submit">Log In</button>
-
-</form>
+</div>
 
 {% endblock %}

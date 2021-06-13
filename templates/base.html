@@ -7,34 +7,34 @@
   <body>
 
   {% if 'user_id' not in session %}
-    <div class="navbar navbar-light bg-info">
+    <div class="navbar navbar-secondary bg-info">
       <div class="navbar-container">
         <div class="navbar-brand"><a class="text-white" href="/">Picslink</a></div>
       </div>
     </div>
+
     {% endif %}
 
   {% if 'user_id' in session %}
     <div class="navbar navbar-light bg-info">
       <div class="navbar-container">
-        <div class="navbar-brand"><a class="text-white" href="/">Picslink</a></div>
+        <!-- <div class="navbar-brand"><a class="text-white" href="/">Picslink</a></div> -->
         <div class="navbar-brand"><a class="text-white" href="/feed">Feed</a></div>
-        <div class="navbar-brand"><a class="text-white" href="/userposts">My Posts</a></div>
+        <div class="navbar-brand"><a class="text-white" href="/myposts">My Posts</a></div>
         <div class="navbar-brand"><a class="text-white" href="/favorites">My Favorites</a></div>
         <div class="navbar-brand"><a class="text-white" href="/logout">Logout</a></div>
       </div>
     </div>
   {% endif %}
 
-
     <div class="container" style="margin-top: 2em">
       {% for msg in get_flashed_messages() %}
-        <div class="alert alert-danger">{{ msg }}</div>
+        <div class="alert alert-warning">{{ msg }}</div>
       {% endfor %}  
-
+      
+      
       {% block content %}
       {% endblock %}
     </div>
-  
   </body>
 </html>
