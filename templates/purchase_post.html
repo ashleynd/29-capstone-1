@@ -2,15 +2,20 @@
 
 {% block content %}
 
-<h3>Rio Cache Pots, Stripe, Small</h3>
+{% for post in posts %}
+
+<h3>{{ post.title }}</h3>
 
 
-<img src="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202050/0012/img23o.jpg" class="rounded float-start" width="200px">
+<img src="{{ post.photo_url }}" class="rounded float-start" width="200px">
 
+<iframe src="{{ post.purchase_url }}" width="700px" height="400px"></iframe>
 
-<iframe src="https://www.westelm.com/products/rio-cache-pots-d7626/?catalogId=71&sku=6686428&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Indoor%20Planters%20%2B%20Terrariums&cm_ite=6686428&gclid=Cj0KCQjwk4yGBhDQARIsACGfAesKp8QZSY2vGxDwHJqbDYi--4jBk8uD1MMMjftvs0P_6VlWn7c0qcsaAmw3EALw_wcB" width="700px" height="400px"></iframe>
+<div><button><a href="{{ post.purchase_url }}" target="_blank">Shop here</a></button></div>
 
+<p class="card-text">{{ post.caption }}</p>
 
-<div><button><a href="https://www.westelm.com/products/rio-cache-pots-d7626/?catalogId=71&sku=6686428&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Indoor%20Planters%20%2B%20Terrariums&cm_ite=6686428&gclid=Cj0KCQjwk4yGBhDQARIsACGfAesKp8QZSY2vGxDwHJqbDYi--4jBk8uD1MMMjftvs0P_6VlWn7c0qcsaAmw3EALw_wcB" target="_blank">Shop here</a></button></div>
+{% endfor %}
 
 {% endblock %}
+

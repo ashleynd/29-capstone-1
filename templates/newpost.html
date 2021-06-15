@@ -4,36 +4,9 @@
 
 <h1>Add a Post</h1>
 
-<!-- <h1>Add Pet</h1>
-
-{% for msg in get_flashed_messages() %}
-  <div>{{ msg }}</div>
-{% endfor %}
-
-<form id="post-add-form" method="POST">
-  {{ form.hidden_tag() }}
-  {% for field in form if field.widget.input_type != 'hidden' %}
-    <p>
-      {{ field.label }}
-      {{ field }}
-    </p>
-  {% endfor %} 
-
-  <button type="submit">Submit</button>
-</form> -->
-
 <form method="POST">
   {% include "_form.html" %}
   <button class="btn btn-primary" type="submit">Add</button>
 </form>
-
-<!-- 
-<p>Create a post:</p>
-
-<form action="/feed">
-    <input type="file" id="myFile" name="filename">
-    <input type="submit">
-</form> -->
-
 
 {% endblock %}

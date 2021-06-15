@@ -104,15 +104,18 @@ def login():
 
 @app.route("/feed")
 def feed():
-    """
-    Extracts the items (images) on the front page of Imgur.
-    For logged-in users only.
-    """
+    """Show recent list of posts, most-recent first."""
+
+    # """
+    # Extracts the items (images) on the front page of Imgur.
+    # For logged-in users only.
+    # """
     # url = "https://api.imgur.com/3/gallery/top/time/week/2?showViral=false&mature=false&album_previews=false"
     # headers = {'Authorization': 'Client-ID 9b315a3d4a73278'}
     # response = requests.request("GET", url, headers=headers)
     # print(response)
 
+    posts = Post.query.order_by(Post.created_at.desc()).limit(5).all()
 
     if "user_id" not in session:
         flash("You must be logged in to view!")
@@ -120,7 +123,7 @@ def feed():
     
 
     else:
-        return render_template("feed.html", feed=feed)
+        return render_template("feed.html", posts=posts)
 
 
 
@@ -232,7 +235,7 @@ def my_posts():
     else:
         user_id = session["user_id"]
         posts = Post.query.filter(user_id==Post.user_id)
-        return render_template("my_posts.html", posts=posts)
+        return render_template("my_posts.html", posts=posts, user_id=user_id)
 
 
 # @app.route("/")
@@ -244,16 +247,47 @@ def my_posts():
 
 
 
-# @app.route('/posts/<int:post_id>/edit', methods=["GET", "POST"])
-# def edit_post(post_id):
-#     """Edit post."""
-#     post = Post.query.get_or_404(posts_id)
-#     form = EditPostForm(obj=post)
+@app.route('/posts/<int:post_id>/edit', methods=["GET", "POST"])
+def edit_post(post_id):
+    """Edit post."""
+    post = Post.query.get_or_404(post_id)
+    form = EditPostForm(obj=post)
 
-#     if form.validate_on_submit():
-#         post.title = form.title.data
-#         post.photo_url = form.photo_url.data
-#         db.session.commit()
-#         flash(f"{post.title} updated.")
-#         return redirect(url_for('my_posts'))
-#     render_template('edit_newpost.html', form=form)
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.photo_url = form.photo_url.data
+        post.purchase_url = form.purchase_url.data
+        post.caption = form.title.data
+        db.session.commit()
+        flash(f"{post.title} updated.")
+        return redirect(url_for('my_posts'))
+    render_template('edit_newpost.html', form=form, post=post)
+
+
+# @app.route('/myposts/<int:post_id/delete', methods=["POST"])
+# def post_delete(post_id):
+#     """Delete a post."""
+
+#     if "user_id" not in session:
+#         flash("You must be logged in to view!")
+#         return redirect("/")
+
+#     post = Post.query.get(post_id)
+#     db.session.delete(post)
+#     db.session.commit()
+
+#     return redirect(f"/myposts")
+
+# @app.route('/posts/delete', methods=["POST"])
+# def post_delete(post_id):
+#     """Delete a post."""
+
+#     if "user_id" not in session:
+#         flash("You must be logged in to view!")
+#         return redirect("/")
+
+#     post = Post.query.get(post_id)
+#     db.session.delete(post)
+#     db.session.commit()
+
+#     return redirect(f"/myposts")

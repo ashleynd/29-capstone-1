@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from datetime import datetime
 
 GENERIC_IMAGE_URL = "https://bethshalomsynagogue.org/wp-content/uploads/sites/77/2019/07/cancelled-stamp-4-e1562879608638.png"
 
@@ -18,18 +19,14 @@ class User(db.Model):
 
     __tablename__ = "users"
 
-    id = db.Column(db.Integer, 
-                   primary_key=True, 
-                   autoincrement=True)
-
-    username = db.Column(db.Text, 
-                         nullable=False, 
-                         unique=True)
-
-    password = db.Column(db.Text, 
-                         nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    first_name = db.Column(db.Text, nullable=False)
+    last_name = db.Column(db.Text, nullable=False)
+    username = db.Column(db.Text, nullable=False, unique=True)
+    password = db.Column(db.Text, nullable=False)
 
     posts = db.relationship('Post', backref='user', cascade='all, delete')
+    # posts = db.relationship("Post", backref="user", cascade="all, delete-orphan")
 
     # start_register
     @classmethod
@@ -59,7 +56,13 @@ class User(db.Model):
             return u
         else:
             return False
-    # end_authenticate    
+    # end_authenticate
+    @property
+    def full_name(self):
+        """Return full name of user."""
+
+        return f"{self.first_name} {self.last_name}"
+
 
 class Post(db.Model):
     """Posts model."""
@@ -68,16 +71,18 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
-    # photo_url = db.Column(db.Text)
+    photo_url = db.Column(db.Text, nullable=False)
     purchase_url = db.Column(db.Text)
     caption = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     
-    # user = db.relationship('Post', backref='users', cascade="all, delete-orphan")
+    @property
+    def friendly_date(self):
+        """Return nicely-formatted date."""
 
-
-
-    # u = Post.query.filter_by(title=title).first()
+        return self.created_at.strftime("%a %b %-d  %Y, %-I:%M %p")
+    
 
     def photo_url(self):
         """Return image for post -- bespoke or generic."""
