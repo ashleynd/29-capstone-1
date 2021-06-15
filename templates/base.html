@@ -1,4 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>
+    Picslink {% block title %}{% endblock %}
+  </title>
   <head>
   <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
   <link rel="stylesheet" href="/static/styles.css">
@@ -20,9 +26,9 @@
       <div class="navbar-container">
         <!-- <div class="navbar-brand"><a class="text-white" href="/">Picslink</a></div> -->
         <div class="navbar-brand"><a class="text-white" href="/feed">Feed</a></div>
-        <div class="navbar-brand"><a class="text-white" href="/add">New Post</a></div>
         <div class="navbar-brand"><a class="text-white" href="/myposts">My Posts</a></div>
         <div class="navbar-brand"><a class="text-white" href="/favorites">My Favorites</a></div>
+        <div class="navbar-brand"><a class="text-white" href="/add">New Post</a></div>
         <div class="navbar-brand"><a class="text-white" href="/logout">Logout</a></div>
       </div>
     </div>
@@ -37,5 +43,6 @@
       {% block content %}
       {% endblock %}
     </div>
+    <script src="/like-button/app.js"></script>
   </body>
 </html>

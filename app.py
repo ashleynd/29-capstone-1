@@ -65,7 +65,7 @@ def register():
         return redirect("/feed")
 
     else:
-        return render_template("register.html", form=form)
+        return render_template("/users/register.html", form=form)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -88,9 +88,9 @@ def login():
             return redirect("/feed")
 
         else:
-            form.username.errors = ["Bad name/password"]
+            form.username.errors = ["Incorrect name/password"]
 
-    return render_template("login.html", form=form)
+    return render_template("/users/login.html", form=form)
 
     #     do_login(user)
     #     flash(f”Hello, {user.username}!“, “success”)
@@ -115,7 +115,8 @@ def feed():
     # response = requests.request("GET", url, headers=headers)
     # print(response)
 
-    posts = Post.query.order_by(Post.created_at.desc()).limit(5).all()
+    # posts = Post.query.order_by(Post.created_at.desc()).limit(5).all()
+    posts = Post.query.order_by(Post.created_at.desc())
 
     if "user_id" not in session:
         flash("You must be logged in to view!")
@@ -123,27 +124,9 @@ def feed():
     
 
     else:
-        return render_template("feed.html", posts=posts)
+        return render_template("/posts/feed.html", posts=posts)
 
 
-
-# @app.route("/feed")
-# def feed():
-#     """Feed page for logged-in users only."""
-
-#     # posts = Post.query.all()
-
-#     if "user_id" not in session:
-#         flash("You must be logged in to view!")
-#         return redirect("/")
-
-#         # alternatively, can return HTTP Unauthorized status:
-#         #
-#         # from werkzeug.exceptions import Unauthorized
-#         # raise Unauthorized()
-
-#     else:
-#         return render_template("feed.html")
 
 @app.route("/favorites")
 def favorites():
@@ -154,7 +137,7 @@ def favorites():
         return redirect("/")
 
     else:
-        return render_template("favorites.html")
+        return render_template("/posts/favorites.html")
 
 @app.route("/buy")
 def purchase_post():
@@ -165,18 +148,7 @@ def purchase_post():
         return redirect("/")
 
     else:
-        return render_template("purchase_post.html")
-
-# @app.route("/myposts")
-# def myposts():
-#     """Posts page for logged-in users only."""
-
-#     if "user_id" not in session:
-#         flash("You must be logged in to view!")
-#         return redirect("/")
-
-#     else:
-#         return render_template("myposts.html")
+        return render_template("/posts/purchase_post.html")
 
 
 @app.route("/logout")
@@ -186,12 +158,6 @@ def logout():
     session.pop("user_id")
 
     return redirect("/")
-
-# @app.route('/newpost')
-# def post_add():
-#     """Add a post."""
-
-#     return render_template('newpost.html')
 
 
 @app.route('/add', methods=["GET", "POST"])
@@ -218,7 +184,7 @@ def add_post():
 
     else:
         # re-present form for editing
-        return render_template('newpost.html', form=form)
+        return render_template('/posts/add_post_form.html', form=form)
 
 
 
@@ -235,59 +201,34 @@ def my_posts():
     else:
         user_id = session["user_id"]
         posts = Post.query.filter(user_id==Post.user_id)
-        return render_template("my_posts.html", posts=posts, user_id=user_id)
-
-
-# @app.route("/")
-# def list_posts():
-#     """List all posts."""
-
-#     posts = Post.query.all()
-#     return render_template("post_list.html", posts=posts)
+        return render_template("/posts/my_posts.html", posts=posts, user_id=user_id)
 
 
 
-@app.route('/posts/<int:post_id>/edit', methods=["GET", "POST"])
-def edit_post(post_id):
-    """Edit post."""
+
+# @app.route('/posts/<int:post_id>/edit', methods=["POST"])
+# def posts_update(post_id):
+#     """Handle form submission for updating an existing post"""
+
+#     post = Post.query.get_or_404(post_id)
+#     post.title = request.form['title']
+#     post.content = request.form['content']
+
+#     db.session.add(post)
+#     db.session.commit()
+#     flash(f"Post '{post.title}' edited.")
+
+#     return redirect(f"/users/{post.user_id}")
+
+
+@app.route('/posts/<int:post_id>/delete', methods=["POST"])
+def posts_destroy(post_id):
+    """Handle form submission for deleting an existing post"""
+
     post = Post.query.get_or_404(post_id)
-    form = EditPostForm(obj=post)
 
-    if form.validate_on_submit():
-        post.title = form.title.data
-        post.photo_url = form.photo_url.data
-        post.purchase_url = form.purchase_url.data
-        post.caption = form.title.data
-        db.session.commit()
-        flash(f"{post.title} updated.")
-        return redirect(url_for('my_posts'))
-    render_template('edit_newpost.html', form=form, post=post)
+    db.session.delete(post)
+    db.session.commit()
+    flash(f"Post '{post.title} deleted.")
 
-
-# @app.route('/myposts/<int:post_id/delete', methods=["POST"])
-# def post_delete(post_id):
-#     """Delete a post."""
-
-#     if "user_id" not in session:
-#         flash("You must be logged in to view!")
-#         return redirect("/")
-
-#     post = Post.query.get(post_id)
-#     db.session.delete(post)
-#     db.session.commit()
-
-#     return redirect(f"/myposts")
-
-# @app.route('/posts/delete', methods=["POST"])
-# def post_delete(post_id):
-#     """Delete a post."""
-
-#     if "user_id" not in session:
-#         flash("You must be logged in to view!")
-#         return redirect("/")
-
-#     post = Post.query.get(post_id)
-#     db.session.delete(post)
-#     db.session.commit()
-
-#     return redirect(f"/myposts")
+    return redirect(f"/users/{post.user_id}")

@@ -25,7 +25,7 @@ class User(db.Model):
     username = db.Column(db.Text, nullable=False, unique=True)
     password = db.Column(db.Text, nullable=False)
 
-    posts = db.relationship('Post', backref='user', cascade='all, delete')
+    posts = db.relationship('Post', backref='user', cascade='all, delete-orphan')
     # posts = db.relationship("Post", backref="user", cascade="all, delete-orphan")
 
     # start_register
@@ -57,6 +57,7 @@ class User(db.Model):
         else:
             return False
     # end_authenticate
+
     @property
     def full_name(self):
         """Return full name of user."""

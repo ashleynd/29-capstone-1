@@ -35,36 +35,94 @@ u3 = User(
     password="$2b$12$HfEoLHkLzjIw3fW8TguBI.e.yvx1ZTw1hYw/zZFYjdvKUTlMzeOwC"
 )
 
-amy = Post(
+amy1 = Post(
     title="Butterfly wall",
     photo_url="https://img.ltwebstatic.com/images3_pi/2020/03/19/1584607766e1634741d4fc0f69ad9bcadb6d8d8b35_thumbnail_900x.webp",
     purchase_url="https://us.shein.com/12pcs-Hollow-Butterfly-Wall-Decor-p-1060702-cat-2520.html?url_from=adplashwallart16200319968B_ssc&gclid=CjwKCAjwn6GGBhADEiwAruUcKhl3EIALpw58hJ_ZOjDNACer1mJZOoxOsWcOfWrL7xNmGKI70RwdkxoCX-sQAvD_BwE",
     caption="Rose gold butterflies",
-    user_id=3
+    user_id=1
 )
 
-marvin = Post(
-    title="Kaloh Pasta Bowl",
-    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202115/0468/img42o.jpg",
-    purchase_url="https://www.westelm.com/products/kaloh-pasta-bowls-set-of-4-white-e1902/?sku=8457041&cm_ven=PLA&cm_ite=8457041&cm_cat=Google&cm_pla=Local&gclid=CjwKCAjwn6GGBhADEiwAruUcKl8clEz7900I5K1987oOylkGrs4MiIsQvLGPiIINzABIrKkkeKjSOBoCcToQAvD_BwE",
-    caption="Colors are golden oak, Charleston Grey, and white.",
+amy2 = Post(
+    title="Bliss garden succulents",
+    photo_url="https://cdn.shopify.com/s/files/1/0715/7597/products/20200324-Bliss_720px_1024x1024.jpg?v=1613315139",
+    purchase_url="https://www.lulasgarden.com/products/bliss-garden?variant=375915184144&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&utm_campaign=gs-2021-04-12&utm_source=google&utm_medium=smart_campaign&gclid=CjwKCAjwn6GGBhADEiwAruUcKmv3whVesWhvjBbz9zwDulB1lR8SAFRGlhmGm9ePPthkGJnqBFIO3BoCWQYQAvD_BwE",
+    caption="Perfect gift. The unique colors of the succulents will make their face light up.",
+    user_id=1
+)
+
+marvin1 = Post(
+    title="Tokyo Chopstick",
+    photo_url="https://cdn.shopify.com/s/files/1/0091/0707/9226/products/product-image-524241600.jpg?v=1568823983",
+    purchase_url="https://articture.com/products/tokyo-chopstick?currency=USD&utm_medium=cpc&utm_source=google&utm_campaign=Google%20Shopping&gclid=CjwKCAjwn6GGBhADEiwAruUcKkHGyvCqRLnfAUQEOffQpco3m4B5WfyMmoPlTU0ns2PAHL2UifVlHxoCNtMQAvD_BwE&variant=13421469827130",
+    caption="A totally different kind of feel for chopstick use.",
     user_id=2
 )
 
-rose = Post(
+marvin2 = Post(
+    title="Lavendar Latte",
+    photo_url="https://cdn.shopify.com/s/files/1/0004/7769/1968/products/CCC-Lavender-Contents-OnGray.png?v=1611620893",
+    purchase_url="https://coppercowcoffee.com/products/lavender-latte-pour-over-vietnamese-coffee-with-organic-lavender-with-milk?variant=15842539339847&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gclid=CjwKCAjwn6GGBhADEiwAruUcKgQK4XeZxA9NpMh_X_4koBuhZLkL9Zce_GRoJegfMmvOC1dVNEoCRxoCbiMQAvD_BwE",
+    caption="Take a moment to unwind with Lavender Latte.",
+    user_id=2
+)
+
+marvin3 = Post(
+    title="Pattern Pop Bowl",
+    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202111/0026/hand-painted-pattern-pop-bowls-small-o.jpg",
+    purchase_url="https://www.westelm.com/products/hand-painted-pattern-pop-bowls-small-e2402/?catalogId=71&sku=3127244&cm_ven=PLA&cm_cat=Google&cm_pla=Kitchen%20%2B%20Dining%20%3E%20Bowls&region_id=708530&cm_ite=3127244&gclid=CjwKCAjwn6GGBhADEiwAruUcKgjbhjUWz-ABEMXk1Zuc2kRzTW5PKPG5l9Eyk1Mifgu17KXW6BBahRoCCDsQAvD_BwE",
+    caption="Hand-painted for perfect ramen.",
+    user_id=2
+)
+
+rose1 = Post(
     title="Tiny cobalt blue sea",
     photo_url="https://i.etsystatic.com/10451613/r/il/e81a7a/1072027519/il_1588xN.1072027519_hcfh.jpg",
     purchase_url="https://www.etsy.com/listing/458754514/9-15mm-04-06-tiny-cobalt-blue-sea-glass?ref=pla_sameshop_listing_top-1&frs=1",
     caption="cobalt seaglass blue small sea glass mosaic glass jewelry glass",
-    user_id=1
+    user_id=3
 )
+
+rose2 = Post(
+    title="Rose gold candle holders",
+    photo_url="https://cdn.shopify.com/s/files/1/1832/6341/products/CAND_HOLD_006_S_M054__02_1000x.jpg?v=1614015618",
+    purchase_url="https://tableclothsfactory.com/products/6-pack-antique-rose-gold-mercury-glass-candle-holders-votive-tealight-holders-with-geometric-design?variant=39006427054265&gclid=CjwKCAjwn6GGBhADEiwAruUcKkgb-KjnyvizzKkZerVp3L7SRpleXDGtOPnlKsDR1e-FRqcb17qljBoC7skQAvD_BwE",
+    caption="Votive Tealight Holders With Geometric Design",
+    user_id=3
+)
+
+rose3 = Post(
+    title="Rose Gold fairy lights",
+    photo_url="https://cdn.shopify.com/s/files/1/1832/6341/products/CAND_HOLD_006_S_M054__02_1000x.jpg?v=1614015618",
+    purchase_url="https://www.macys.com/shop/product/cocus-pocus-rose-gold-fairy-lights?ID=10500413&pla_country=US&CAGPSPN=pla&cm_mmc=Google_SH_PLA_Tabletop-_-GS_Home_Decor_PLA_Restructure_Cocus_Pocus-_-520677615358-_-pg1052191498_c_kclickid_d149d6ed-adae-484f-a4e7-8e1f1fd06df5_KID_EMPTY_13048677288_125737515281_520677615358_pla-1260045957825_850009997012USA__c_KID_&trackingid=509x1052191498&m_sc=sem&m_sb=Google&m_tp=PLA&m_ac=Google_SH_PLA_Tabletop&m_ag=CocusPocus&m_cn=GS_Home_Decor_PLA_Restructure&m_pi=go_cmp-13048677288_adg-125737515281_ad-520677615358_pla-1260045957825_dev-c_ext-_prd-850009997012USA&gclid=CjwKCAjwn6GGBhADEiwAruUcKqt_1csNYA1erhpd4zai-Az__mJn1ToKrcI3Vtco2ARWIAM50PS-_BoCvWIQAvD_BwE",
+    caption="Pretty mood lighting for the bedroom",
+    user_id=3
+)
+
+rose4 = Post(
+    title="Rose Gold Printable",
+    photo_url="https://i.etsystatic.com/21550101/r/il/49ac93/2475705026/il_1588xN.2475705026_rl07.jpg",
+    purchase_url="https://www.etsy.com/listing/856953237/rose-gold-printable-abstract-prints-rose?gpla=1&gao=1&",
+    caption="Living Room Decor | Bedroom Prints",
+    user_id=3
+)
+
+rose5 = Post(
+    title="Abstract art frame",
+    photo_url="https://i.etsystatic.com/11577301/r/il/815757/1774100642/il_1588xN.1774100642_3bxg.jpg",
+    purchase_url="https://www.etsy.com/listing/512610222/rose-gold-printable-brushstroke-abstract?ref=landingpage_similar_listing_top-3",
+    caption="Decor for the living room",
+    user_id=3
+)
+
+
 
 
 db.session.add_all([u1, u2, u3])
 
 db.session.commit()
 
-db.session.add_all([rose, marvin, amy])
+db.session.add_all([amy1, amy2, marvin1, marvin2, marvin3, rose1, rose2, rose3, rose4, rose5])
 
 db.session.commit()
 

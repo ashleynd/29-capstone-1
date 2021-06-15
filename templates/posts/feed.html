@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="display-4">Picslink Feed</h1>
+
+{% for post in posts %}
+
+<div class="card" style="width: 14rem;">
+  <div class="card-body">
+    <a href="/buy">
+      <img src="{{ post.photo_url }}" class="card-img-top" alt="image">
+      <h5 class="card-title">{{ post.title }}</h5>
+    </a>
+      <p class="card-text">{{ post.caption }}</p>
+      <a href="#" class="btn btn-outline-info btn-sm">Like</a>
+      <p><small>By {{ post.user.username }} on {{ post.friendly_date }}</small></p>
+    </div>
+  </div>
+    {% else %}
+    <div class="col-12">No posts yet.</div>
+    {% endfor %}
+
+
+<!-- hard-coded in example:
+<a href="/buy">
+    <img src="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202050/0012/img23o.jpg" class="rounded float-start" >
+</a>
+<a href="/buy">
+    
+  <div class="row align-items-start">
+    <div class="row align-items-center">
+      <div class="col">
+        <div class="card" style="width: 16rem;">
+            <a href="/buy">
+                <img src="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202050/0012/img23o.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Rio Cache Pots</h5>
+                </a>
+                  <p class="card-text">Clay flower pots for perfect windowsill decor.</p>
+                  <a href="/like" class="btn btn-outline-info btn-sm">Like</a>
+                </div>
+              </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 16rem;">
+            <a href="/buy">
+                <img src="https://i.guim.co.uk/img/media/8a13052d4db7dcd508af948e5db7b04598e03190/0_294_5616_3370/master/5616.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=bcaa4eed2c1e6dab61c41a61e41433d9" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Curious cat</h5>
+                </a>
+                  <p class="card-text">Always fun outside.</p>
+                  <a href="/like" class="btn btn-outline-info btn-sm">Like</a>
+                </div>
+              </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 16rem;">
+            <a href="/buy">
+                <img src="https://media.wired.com/photos/5cdefb92b86e041493d389df/1:1/w_988,h_988,c_limit/Culture-Grumpy-Cat-487386121.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Grumpy cat</h5>
+                </a>
+                  <p class="card-text">Always in a mood.</p>
+                  <a href="/like" class="btn btn-outline-info btn-sm">Like</a>
+                </div>
+              </div>
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col">
+        <div class="card" style="width: 16rem;">
+            <a href="/buy">
+                <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/10/23/pg-18-robin-2-pa.jpg?width=1200" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Tweety bird</h5>
+                  <p class="card-text">The facsincating warbler.</p>
+                </a>
+                  <a href="/like" class="btn btn-outline-info btn-sm">Like</a>
+                </div>
+              </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 16rem;">
+            <a href="/buy">
+                <img src="https://i0.wp.com/onwardstate.com/wp-content/uploads/2015/05/cute.gif?resize=490%2C240" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Sleepy pup</h5>
+                </a>
+                  <p class="card-text">It's always naptime somewhere.</p>
+                  <a href="/like" class="btn btn-outline-info btn-sm">Like</a>
+                </div>
+              </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 16rem;">
+            <a href="/buy">
+                <img src="https://i.pinimg.com/originals/9f/67/9a/9f679ae88c12540649c90cb9caa038c0.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Always dreaming</h5>
+                </a>
+                  <p class="card-text">Dreamy pink clouds in the sky.</p>
+                  <a href="/like" class="btn btn-outline-info btn-sm">Like</a>
+                </div>
+              </div>
+      </div>
+    </div>
+    <div class="row align-items-end">
+      <div class="col">
+        <div class="card" style="width: 16rem;">
+            <a href="/buy">
+                <img src="https://cdn.britannica.com/86/75886-050-B481C97E/Apricots.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Perfect peaches</h5>
+                </a>
+                  <p class="card-text">Ripe peaches still on the tree.</p>
+                  <a href="/like" class="btn btn-outline-info btn-sm">Like</a>
+                </div>
+              </div>
+      </div>
+      <div id="container" class="col">
+        <div class="card" style="width: 16rem;">
+            <a href="/buy">
+                <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/toast-with-avocado-and-cress-royalty-free-image-544809990-1541541433.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">The alphabet fruit.</h5>
+                </a>
+                  <p class="card-text">Always needed to include in your diet.</p>
+                  <a href="/like" class="btn btn-outline-info btn-sm">Like</a>
+                </div>
+              </div>
+      </div>
+      <div id="container" class="col">
+        <div class="card" style="width: 16rem;">
+            <a href="/buy">
+                <img src="https://www.ikea.com/us/en/images/products/muskot-plant-pot-white__0900770_pe697494_s5.jpg?f=s" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Flower planter</h5>
+                </a>
+                  <p class="card-text">Getting ready at the windowsill.</p>
+                  <a href="/like" class="btn btn-outline-info btn-sm">Like</a>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</a>
+ -->
+
+
+
+{% endblock %}
