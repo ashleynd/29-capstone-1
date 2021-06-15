@@ -1,8 +1,7 @@
-from flask import Flask, render_template, redirect, session, flash, g, url_for
+from flask import Flask, render_template, redirect, session, flash, g, abort, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, db, User, Post
 from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm
-
 import requests
 from werkzeug.wrappers import AuthorizationMixin
 # from imgurpython import ImgurClient
@@ -16,10 +15,11 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
 app.config["SECRET_KEY"] = "abc123"
+
+
 toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
-
 db.create_all()
 
 
@@ -202,6 +202,14 @@ def my_posts():
         user_id = session["user_id"]
         posts = Post.query.filter(user_id==Post.user_id)
         return render_template("/posts/my_posts.html", posts=posts, user_id=user_id)
+    
+
+@app.route('/posts/<int:post_id>', methods=["GET"])
+def posts_show(post_id):
+    """Show a post."""
+
+    post = Post.query.get(post_id)
+    return render_template('posts/purchase_post.html', post=post)
 
 
 
@@ -232,3 +240,12 @@ def posts_destroy(post_id):
     flash(f"Post '{post.title} deleted.")
 
     return redirect(f"/users/{post.user_id}")
+
+
+
+#############################################################################
+# 404 Page
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404

@@ -26,6 +26,7 @@ class User(db.Model):
     password = db.Column(db.Text, nullable=False)
 
     posts = db.relationship('Post', backref='user', cascade='all, delete-orphan')
+    likes = db.relationship('Post', secondary="likes")
     # posts = db.relationship("Post", backref="user", cascade="all, delete-orphan")
 
     # start_register
@@ -72,7 +73,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
-    photo_url = db.Column(db.Text, nullable=False)
+    # photo_url = db.Column(db.Text, nullable=False)
     purchase_url = db.Column(db.Text)
     caption = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
@@ -93,3 +94,12 @@ class Post(db.Model):
     def __repr__(self):
         return f"<Post Info: {self.id} {self.title} {self.purchase_url} {self.caption} {self.user_id}>"
 
+
+class Likes(db.Model):
+    """Mapping user likes to posts."""
+
+    __tablename__ = 'likes' 
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='cascade'), unique=True)

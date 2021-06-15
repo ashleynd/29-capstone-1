@@ -2,3 +2,6 @@ img {
     width: 200px;
 }
 
+.card {
+    display: inline-block;
+}

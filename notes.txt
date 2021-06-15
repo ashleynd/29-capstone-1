@@ -75,3 +75,6 @@ in terminal:
 psql
 \c picslink
 SELECT * FROM posts;
+
+HTML iframe tag:
+https://www.w3schools.com/tags/tag_iframe.asp

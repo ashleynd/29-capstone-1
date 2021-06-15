@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="display-4">Picslink Feed</h1>
+
+{% for post in posts %}
+
+<div class="card" style="width: 14rem;">
+  <div class="card-body">
+    <a href="/buy">
+      <img src="{{ post.photo_url }}" class="card-img-top" alt="image">
+      <h5 class="card-title">{{ post.title }}</h5>
+    </a>
+      <p class="card-text">{{ post.caption }}</p>
+      <p><small>By {{ post.user.username }} on {{ post.friendly_date }}</small></p>
+      {% for post in likes %}
+      <!-- <a href="#" class="btn btn-outline-info btn-sm">Like</a> -->
+      <form method="POST" action="/posts/{{ post.id }}/like" class="posts-like"></form>
+      <button class="
+      btn 
+      btn-sm 
+      {{'btn-primary'}}"
+    >
+      <i class="fa fa-thumbs-up"></i> 
+    </button>
+  </form>
+  {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+    {% else %}
+    <div class="col-12">No posts yet.</div>
+    {% endfor %}

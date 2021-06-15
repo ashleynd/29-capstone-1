@@ -1,21 +1,15 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block content %}
 
 {% for post in posts %}
 
-<h3>{{ post.title }}</h3>
+<h5>{{ post.title }}</h5>
+<p>{{ post.caption }}</p>
+<img src="{{ post.photo_url }}" class="card-img-top" alt="image">
 
-
-<img src="{{ post.photo_url }}" class="rounded float-start" width="200px">
-
-<iframe src="{{ post.purchase_url }}" width="700px" height="400px"></iframe>
-
-<div><button><a href="{{ post.purchase_url }}" target="_blank">Shop here</a></button></div>
-
-<p class="card-text">{{ post.caption }}</p>
+<p><small>By {{ post.user.username }} on {{ post.friendly_date }}</small></p>
 
 {% endfor %}
 
 {% endblock %}
-
