@@ -13,7 +13,9 @@ img {
 
 .card {
     display: inline-block;
-    margin: 5px;
+    margin: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
     background-color: aliceblue;
     box-shadow: 0px 0px 0px grey;
     -webkit-transition:  box-shadow .25s ease-out;
@@ -122,6 +124,22 @@ img {
 
 #like-btn-fav:hover { 
      background-color: #fffaca;
+     box-shadow: 1px 4px 9px grey;
+    -webkit-transition:  box-shadow .1s ease-in;
+}
+
+#delete-btn {
+    background-color: #ffffff;
+    padding: 5px 10px;
+    margin: 2px;
+    border: grey;
+    box-shadow: 1px 3px 5px grey;
+    border-radius: 80px;
+    font-size: 21px;
+}
+
+#delete-btn:hover { 
+     background-color: #d4d4d4;
      box-shadow: 1px 4px 9px grey;
     -webkit-transition:  box-shadow .1s ease-in;
 }

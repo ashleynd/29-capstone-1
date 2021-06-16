@@ -35,6 +35,14 @@ u3 = User(
     password="$2b$12$HfEoLHkLzjIw3fW8TguBI.e.yvx1ZTw1hYw/zZFYjdvKUTlMzeOwC"
 )
 
+u4 = User(
+    first_name="Violet",
+    last_name="Miller",
+    username="MyNameIsViolet",
+    # password="purple123"
+    password="$2b$12$JLNg50pdRXI6PORmkpPWa.ZqdUA1dg0xdsnb5TBJ5exS9JWaHTjQ6"
+)
+
 amy1 = Post(
     title="Butterfly wall",
     photo_url="https://img.ltwebstatic.com/images3_pi/2020/03/19/1584607766e1634741d4fc0f69ad9bcadb6d8d8b35_thumbnail_900x.webp",
@@ -131,14 +139,30 @@ rose6 = Post(
     user_id=3
 )
 
+violet1 = Post(
+    title="Swirled Movement Glass Vase",
+    photo_url="https://images-na.ssl-images-amazon.com/images/I/61yUAt6V%2BsL._AC_SL1001_.jpg",
+    purchase_url="https://www.anthropologie.com/shop/swirled-movement-glass-vase?color=053&size=Small&inventoryCountry=US&countryCode=US&type=STANDARD&quantity=1",
+    caption="Color in lavender, and made of glass.",
+    user_id=4
+)
+
+violet2 = Post(
+    title="Purple sunset canvas",
+    photo_url="https://cdn.shopify.com/s/files/1/1568/8443/products/living_room_331_0b029dd8-4e14-4c94-a22e-fad9b69a3e0b_1200x1200.jpg?v=1618900839",
+    purchase_url="https://www.elephantstock.com/products/sand-harbor-purple-sunset-multi-panel-canvas-wall-art?variant=39320519442515",
+    caption="Very pretty and ready to hang.",
+    user_id=4
+)
 
 
 
-db.session.add_all([u1, u2, u3])
+
+db.session.add_all([u1, u2, u3, u4])
 
 db.session.commit()
 
-db.session.add_all([amy1, amy2, amy3, marvin1, marvin2, marvin3, rose1, rose2, rose3, rose4, rose5, rose6])
+db.session.add_all([amy1, amy2, amy3, marvin1, marvin2, marvin3, rose1, rose2, rose3, rose4, rose5, rose6, violet1, violet2])
 
 db.session.commit()
 

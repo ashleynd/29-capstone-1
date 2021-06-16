@@ -1,9 +1,10 @@
 from flask import Flask, render_template, redirect, session, flash, g, abort, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, db, User, Post
-from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm
+from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm, DeleteForm
 import requests
-from werkzeug.wrappers import AuthorizationMixin
+from sqlalchemy.exc import IntegrityError
+# from werkzeug.wrappers import AuthorizationMixin
 # from imgurpython import ImgurClient
 # from secrets import client_id, client_secret, access_token, refresh_token
 
@@ -47,25 +48,47 @@ def homepage():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    """Register user: produce form & handle form submission."""
-
+    """Register user."""
     form = RegisterForm()
-
     if form.validate_on_submit():
-        name = form.username.data
-        pwd = form.password.data
+        username = form.username.data
+        password = form.password.data
+        first_name = form.first_name.data
+        last_name = form.last_name.data
+        user = User.register(username, password, first_name, last_name)
 
-        user = User.register(name, pwd)
         db.session.add(user)
-        db.session.commit()
-
+        try:
+            db.session.commit()
+        except IntegrityError:
+            form.username.errors.append('Username taken.  Please pick another')
+            return render_template('/users/register.html', form=form)
         session["user_id"] = user.id
-
-        # on successful login, redirect to user feed page
+        flash('Welcome! Successfully Created Your Account!', "success")
         return redirect("/feed")
 
-    else:
-        return render_template("/users/register.html", form=form)
+    return render_template('/users/register.html', form=form)
+
+
+    # form = RegisterForm()
+    # if form.validate_on_submit():
+    #     name = form.username.data
+    #     password = form.password.data
+    #     # first_name = form.first_name.data
+    #     # last_name = form.last_name.data
+
+    #     user = User.register(name, password)
+    #     db.session.add(user)
+    #     db.session.commit()
+
+    #     session["user_id"] = user.id
+
+    #     # on successful login, redirect to user feed page
+    #     flash('Welcome! Successfully Created Your Account!', "success")
+    #     return redirect("/feed")
+
+    # else:
+    #     return render_template("/users/register.html", form=form)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -201,7 +224,8 @@ def my_posts():
     else:
         user_id = session["user_id"]
         posts = Post.query.filter(user_id==Post.user_id)
-        return render_template("/posts/my_posts.html", posts=posts, user_id=user_id)
+        form = DeleteForm()
+        return render_template("/posts/my_posts.html", posts=posts, user_id=user_id, form=form)
     
 
 @app.route('/posts/<int:post_id>', methods=["GET"])
@@ -229,17 +253,34 @@ def posts_show(post_id):
 #     return redirect(f"/users/{post.user_id}")
 
 
-@app.route('/posts/<int:post_id>/delete', methods=["POST"])
-def posts_destroy(post_id):
-    """Handle form submission for deleting an existing post"""
+# @app.route('/posts/<int:post_id>/delete', methods=["POST"])
+# def posts_destroy(post_id):
+#     """Handle form submission for deleting an existing post"""
 
-    post = Post.query.get_or_404(post_id)
+#     post = Post.query.get_or_404(post_id)
 
-    db.session.delete(post)
-    db.session.commit()
-    flash(f"Post '{post.title} deleted.")
+#     db.session.delete(post)
+#     db.session.commit()
+#     flash(f"Post '{post.title} deleted.")
 
-    return redirect(f"/users/{post.user_id}")
+#     return redirect(f"/users/{post.user_id}")
+
+@app.route("/posts/<int:post_id>/delete", methods=["POST"])
+def delete_post(post_id):
+    """Delete post."""
+
+    post = Post.query.get(post_id)
+    if "user_id" not in session:
+        flash("You must be logged in to delete posts.")
+        return redirect("/")
+
+    form = DeleteForm()
+
+    if form.validate_on_submit():
+        db.session.delete(post)
+        db.session.commit()
+
+    return redirect("/myposts")
 
 
 

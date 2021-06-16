@@ -29,17 +29,18 @@
 <!-- <h1>{{ posts }}</h1> -->
 
 {% for post in posts %}
-
-
-    <div class="card" style="width: 14rem;">
-      <div class="card-body">
-        <a href="/buy">
-          <img src="{{ post.photo_url }}" class="card-img-top" alt="image">
-          <h5 class="card-title">{{ post.title }}</h5>
-        </a>
-          <p class="card-text">{{ post.caption }}</p>
-          <a href="/posts/delete" id="btn" class="btn btn-outline-danger btn-sm">Delete</a>
-          <p><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
+<form style="display:inline" action="/posts/{{ post.id }}/delete">
+  {{form.hidden_tag()}}
+  <div class="card" style="width: 14rem;">
+    <div class="card-body">
+      <a href="/buy">
+        <img src="{{ post.photo_url }}" class="card-img-top text-info" alt="image">
+        <h5 class="card-title text-dark">{{ post.title }}</h5>
+      </a>
+      <p class="card-text">{{ post.caption }}</p>
+      <p><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
+      <button id="delete-btn" class="btn btn-outline-danger" formmethod="POST" formaction="/posts/{{ post.id }}/delete">❌</button>
+    </form>
         </div>
       </div>
         {% else %}

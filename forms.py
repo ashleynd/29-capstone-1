@@ -34,3 +34,6 @@ class EditPostForm(FlaskForm):
     purchase_url = StringField("Link to where to purchase item", validators=[URL()])
     caption = TextAreaField("Photo caption", validators=[Optional()])
 
+class DeleteForm(FlaskForm):
+    """Delete form."""
+
