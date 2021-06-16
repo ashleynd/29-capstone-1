@@ -1,34 +1,36 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
-<h1 class="display-4">Picslink Feed</h1>
-
-{% for post in posts %}
-
-<div class="card" style="width: 14rem;">
-  <div class="card-body">
-    <a href="/buy">
-      <img src="{{ post.photo_url }}" class="card-img-top" alt="image">
-      <h5 class="card-title">{{ post.title }}</h5>
-    </a>
-      <p class="card-text">{{ post.caption }}</p>
-      <p><small>By {{ post.user.username }} on {{ post.friendly_date }}</small></p>
-      {% for post in likes %}
-      <!-- <a href="#" class="btn btn-outline-info btn-sm">Like</a> -->
-      <form method="POST" action="/posts/{{ post.id }}/like" class="posts-like"></form>
-      <button class="
-      btn 
-      btn-sm 
-      {{'btn-primary'}}"
-    >
-      <i class="fa fa-thumbs-up"></i> 
-    </button>
-  </form>
-  {% endif %}
-      {% endfor %}
+  <div class="col-sm-9">
+    <div class="row">
+        <ul class="list-group" id="messages">
+          {% for msg in likes %}
+            <li class="list-group-item">
+              <a href="/messages/{{ msg.id  }}" class="message-link"/>
+              <a href="/users/{{ msg.user.id }}">
+                <img src="{{ msg.user.image_url }}" alt="" class="timeline-image">
+              </a>
+              <div class="message-area">
+                <a href="/users/{{ msg.user.id }}">@{{ msg.user.username }}</a>
+                <span class="text-muted">{{ msg.timestamp.strftime('%d %B %Y') }}</span>
+                <p>{{ msg.text }}</p>
+              </div>
+              {% if user.id == g.user.id %}
+              <form method="POST" action="/messages/{{ msg.id }}/like" class="messages-like">
+                <button class="
+                  btn 
+                  btn-sm 
+                  {{'btn-primary'}}"
+                >
+                  <i class="fa fa-thumbs-up"></i> 
+                </button>
+              </form>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
-    {% else %}
-    <div class="col-12">No posts yet.</div>
-    {% endfor %}
+
+{% endblock %}

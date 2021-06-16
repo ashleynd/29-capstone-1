@@ -28,14 +28,14 @@
     <div class="navbar">
       <div class="navbar-container">
         <!-- <div class="navbar-brand"><a class="text-white" href="/">Picslink</a></div> -->
-        <div class="navbar-brand"><a class="text-dark" href="/feed">Feed</a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/myposts">My Posts</a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/favorites">My Favorites</a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/add">New Post</a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/logout">Logout</a></div>
-        {% for post in posts %}
+        <div class="navbar-brand"><a class="text-dark" href="/feed" style="text-decoration: none;">Feed</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/myposts" style="text-decoration: none;">My Posts</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/favorites" style="text-decoration: none;">My Favorites</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/add" style="text-decoration: none;">New Post</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/logout" style="text-decoration: none;">Logout</a></div>
+        <!-- {% for post in posts %}
         {{ post.user.full_name }}
-        {% endfor %}
+        {% endfor %} -->
       </div>
     </div>
   {% endif %}
@@ -49,6 +49,5 @@
       {% block content %}
       {% endblock %}
     </div>
-    <script src="/like-button/app.js"></script>
   </body>
 </html>

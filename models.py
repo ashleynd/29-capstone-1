@@ -27,7 +27,10 @@ class User(db.Model):
 
     posts = db.relationship('Post', backref='user', cascade='all, delete-orphan')
     likes = db.relationship('Post', secondary="likes")
-    # posts = db.relationship("Post", backref="user", cascade="all, delete-orphan")
+
+
+    def __repr__(self):
+        return f"<User #{self.id}: {self.username}>"
 
     # start_register
     @classmethod

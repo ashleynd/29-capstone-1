@@ -91,6 +91,14 @@ marvin3 = Post(
     user_id=2
 )
 
+marvin4 = Post(
+    title="Cereal Bowlsl",
+    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202112/0088/la-jolla-dinnerware-9-o.jpg",
+    purchase_url="https://www.westelm.com/products/la-jolla-dinnerware-e2801/?catalogId=71&sku=9193676&cm_ven=PLA&cm_cat=Google&cm_pla=Kitchen%20%2B%20Dining%20%3E%20Outdoor%20Dinnerware%20%2B%20Drinkware&region_id=708530&cm_ite=9193676&gclid=CjwKCAjwwqaGBhBKEiwAMk-FtMiLXCHck-8mH_dCZZ5zT1BT-svllBSMv0gWWoOo0kyitkk7gi6VORoCSqMQAvD_BwE",
+    caption="Admirable dinnerware with other colors.",
+    user_id=2
+)
+
 rose1 = Post(
     title="Tiny cobalt blue sea",
     photo_url="https://i.etsystatic.com/10451613/r/il/e81a7a/1072027519/il_1588xN.1072027519_hcfh.jpg",
@@ -155,6 +163,22 @@ violet2 = Post(
     user_id=4
 )
 
+violet3 = Post(
+    title="Purple and gold plate",
+    photo_url="https://cdn.shopify.com/s/files/1/1552/7691/products/CHRG_PLST0004_PURP__01_760x760.jpg?v=1586372063",
+    purchase_url="https://www.efavormart.com/products/set-of-6-13-round-purple-gold-plastic-charger-plates-with-gold-brushed-waved-scalloped-rim?variant=31912073035822&gclid=CjwKCAjwwqaGBhBKEiwAMk-FtIUTTzOMixVqEIHfMFJSXgUvUM62MOgXcd3GRbOHkASmBOqums7lehoC5fwQAvD_BwE",
+    caption="With scalloped rim.",
+    user_id=4
+)
+
+violet4 = Post(
+    title="Lavendar blackout curtains",
+    photo_url="https://cdn.shopify.com/s/files/1/1552/7691/products/CUR_PANEMBS01_52108_LAV_D22_760x760.jpg?v=1586394976",
+    purchase_url="https://www.efavormart.com/products/pack-of-2-52x108-lavender-embossed-thermal-blackout-curtains-with-chrome-grommet-window-treatment-panels?variant=1772067029010&gclid=CjwKCAjwwqaGBhBKEiwAMk-FtEEdjQH-kqXJMOtkAA5GtjSYMmU42VyduqIr0BeU3GTv_gJWRV1IDBoCueAQAvD_BwE",
+    caption="Curtain panels.",
+    user_id=4
+)
+
 
 
 
@@ -162,7 +186,7 @@ db.session.add_all([u1, u2, u3, u4])
 
 db.session.commit()
 
-db.session.add_all([amy1, amy2, amy3, marvin1, marvin2, marvin3, rose1, rose2, rose3, rose4, rose5, rose6, violet1, violet2])
+db.session.add_all([amy1, amy2, amy3, marvin1, marvin2, marvin3, marvin4, rose1, rose2, rose3, rose4, rose5, rose6, violet1, violet2, violet3, violet4])
 
 db.session.commit()
 

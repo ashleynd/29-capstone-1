@@ -2,17 +2,18 @@
 
 {% block content %}
 
-<h1 class="display-4">Picslink Feed</h1>
+<h1>Picslink Feed</h1>
 {% for post in posts %}
       <div class="card" style="width: 14rem;">
         <div class="card-body">
-          <a href="/buy">
+          <a href="/buy" style="text-decoration: none;">
             <img src="{{ post.photo_url }}" class="card-img-top text-info" alt="image">
             <h5 class="card-title text-dark">{{ post.title }}</h5>
           </a>
             <p class="card-text">{{ post.caption }}</p>
             <p><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
-            <a href="#" id="like-btn" class="btn btn-outline-info btn-sm">⭐️</a>
+            <button id="like-btn"><a href="#" style="text-decoration: none;">⭐️</a></button>
+            <button id="shop-btn"><a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button>
           </div>
         </div>
     {% else %}
@@ -145,6 +146,6 @@
 </a>
  -->
 
-
+</div>
 
 {% endblock %}

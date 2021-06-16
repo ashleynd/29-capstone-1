@@ -6,8 +6,8 @@ from wtforms.validators import InputRequired, Length, URL, Optional
 class RegisterForm(FlaskForm):
     """Form for registering a user."""
 
-    first_name = TextAreaField("First Name", validators=[InputRequired()])
-    last_name = TextAreaField("Last Name", validators=[InputRequired()])
+    first_name = StringField("First Name", validators=[InputRequired()])
+    last_name = StringField("Last Name", validators=[InputRequired()])
     username = StringField("Username", validators=[InputRequired()])
     password = PasswordField("Password", validators=[InputRequired()])
 

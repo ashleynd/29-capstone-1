@@ -232,11 +232,42 @@ def my_posts():
 def posts_show(post_id):
     """Show a post."""
 
-    post = Post.query.get(post_id)
-    return render_template('posts/purchase_post.html', post=post)
+    p = Post.query.get(post_id)
+    return render_template('posts/purchase_post.html', post=p)
 
 
+@app.route('/users/<int:user_id>/likes', methods=["GET"])
+def show_likes(user_id):
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
 
+    user = User.query.get_or_404(user_id)
+    return render_template('users/likes.html', user=user, likes=user.likes)
+
+
+@app.route('/posts/<int:post_id>/like', methods=['POST'])
+def add_like(post_id):
+    """Toggle a liked post for the currently-logged-in user."""
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    liked_post = Post.query.get_or_404(post_id)
+    if liked_post.user_id == g.user.id:
+        return abort(403)
+
+    user_likes = g.user.likes
+
+    if liked_post in user_likes:
+        g.user.likes = [like for like in user_likes if like != liked_post]
+    else:
+        g.user.likes.append(liked_post)
+
+    db.session.commit()
+
+    return redirect("/")
 
 # @app.route('/posts/<int:post_id>/edit', methods=["POST"])
 # def posts_update(post_id):
