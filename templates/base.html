@@ -13,23 +13,23 @@
   <body>
 
   {% if 'user_id' not in session %}
-    <div class="navbar navbar-secondary bg-info">
+    <div class="navbar">
       <div class="navbar-container">
-        <div class="navbar-brand"><a class="text-white" href="/">Picslink</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/">Picslink</a></div>
       </div>
     </div>
 
     {% endif %}
 
   {% if 'user_id' in session %}
-    <div class="navbar navbar-light bg-info">
+    <div class="navbar">
       <div class="navbar-container">
         <!-- <div class="navbar-brand"><a class="text-white" href="/">Picslink</a></div> -->
-        <div class="navbar-brand"><a class="text-white" href="/feed">Feed</a></div>
-        <div class="navbar-brand"><a class="text-white" href="/myposts">My Posts</a></div>
-        <div class="navbar-brand"><a class="text-white" href="/favorites">My Favorites</a></div>
-        <div class="navbar-brand"><a class="text-white" href="/add">New Post</a></div>
-        <div class="navbar-brand"><a class="text-white" href="/logout">Logout</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/feed">Feed</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/myposts">My Posts</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/favorites">My Favorites</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/add">New Post</a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/logout">Logout</a></div>
       </div>
     </div>
   {% endif %}
