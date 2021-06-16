@@ -12,8 +12,8 @@
             <h5 class="card-title text-dark">{{ post.title }}</h5>
           </a>
             <p class="card-text">{{ post.caption }}</p>
-            <p><small>By {{ post.user.username }} on {{ post.friendly_date }}</small></p>
-            <a href="#" class="btn btn-outline-info btn-sm">Like</a>
+            <p><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
+            <a href="#" id="like-btn" class="btn btn-outline-info btn-sm">⭐️</a>
           </div>
         </div>
     {% else %}

@@ -25,7 +25,7 @@ img {
     -webkit-transition:  box-shadow .25s ease-in;
 }
 
-.btn {
+#btn {
     background-color: #fffbf7;
     border: none;
     color: white;
@@ -41,8 +41,21 @@ img {
     box-shadow: .8px .9px 3px grey;
 }
 
-.btn:hover { 
+#btn:hover { 
      box-shadow: 1px 3px 8px grey;
     -webkit-transition:  box-shadow .1s ease-in;
 }
   
+#like-btn {
+    background-color: #fffefb;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 80px;
+    font-size: 20px;
+}
+
+#like-btn:hover { 
+     box-shadow: 1px 3px 5px grey;
+     background-color: #fffaca;
+    -webkit-transition:  box-shadow .1s ease-in;
+}

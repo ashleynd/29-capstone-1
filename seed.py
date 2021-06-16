@@ -51,6 +51,14 @@ amy2 = Post(
     user_id=1
 )
 
+amy3 = Post(
+    title="Beach bag",
+    photo_url="https://i.etsystatic.com/8617622/r/il/d8ebd2/2966175412/il_1588xN.2966175412_mhjv.jpg",
+    purchase_url="https://www.etsy.com/listing/682631150/personalized-bag-beach-bag-bridesmaid?gpla=1&gao=1&",
+    caption="Personalized beach bag available.",
+    user_id=1
+)
+
 marvin1 = Post(
     title="Tokyo Chopstick",
     photo_url="https://cdn.shopify.com/s/files/1/0091/0707/9226/products/product-image-524241600.jpg?v=1568823983",
@@ -115,6 +123,14 @@ rose5 = Post(
     user_id=3
 )
 
+rose6 = Post(
+    title="Cosmetics organizer",
+    photo_url="https://images-na.ssl-images-amazon.com/images/I/61yUAt6V%2BsL._AC_SL1001_.jpg",
+    purchase_url="https://www.amazon.com/Cosmetics-Bathroom-Organizer-Assembled-Seasoning/dp/B082Z1KBW2/ref=asc_df_B082Z1KBW2/?tag=hyprod-20&linkCode=df0&hvadid=416801038319&hvpos=&hvnetw=g&hvrand=11715931584947198712&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9051962&hvtargid=pla-897524605629&psc=1&tag=&ref=&adgrpid=94717454540&hvpone=&hvptwo=&hvadid=416801038319&hvpos=&hvnetw=g&hvrand=11715931584947198712&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9051962&hvtargid=pla-897524605629",
+    caption="Desktop Cosmetics Storage Rack Rose Gold",
+    user_id=3
+)
+
 
 
 
@@ -122,7 +138,7 @@ db.session.add_all([u1, u2, u3])
 
 db.session.commit()
 
-db.session.add_all([amy1, amy2, marvin1, marvin2, marvin3, rose1, rose2, rose3, rose4, rose5])
+db.session.add_all([amy1, amy2, amy3, marvin1, marvin2, marvin3, rose1, rose2, rose3, rose4, rose5, rose6])
 
 db.session.commit()
 

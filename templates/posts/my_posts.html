@@ -38,8 +38,8 @@
           <h5 class="card-title">{{ post.title }}</h5>
         </a>
           <p class="card-text">{{ post.caption }}</p>
-          <a href="/posts/delete" class="btn btn-outline-danger btn-sm">Delete</a>
-          <p><small>By {{ post.user.username }} on {{ post.friendly_date }}</small></p>
+          <a href="/posts/delete" id="btn" class="btn btn-outline-danger btn-sm">Delete</a>
+          <p><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
         </div>
       </div>
         {% else %}
