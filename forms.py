@@ -6,19 +6,16 @@ from wtforms.validators import InputRequired, Length, URL, Optional
 class RegisterForm(FlaskForm):
     """Form for registering a user."""
 
-    username = StringField("Username", validators=[InputRequired()])
-    password = PasswordField("Password", validators=[InputRequired()])
     first_name = TextAreaField("First Name", validators=[InputRequired()])
     last_name = TextAreaField("Last Name", validators=[InputRequired()])
-    email = StringField("Email", validators=[InputRequired()])
-
+    username = StringField("Username", validators=[InputRequired()])
+    password = PasswordField("Password", validators=[InputRequired()])
 
 class LoginForm(FlaskForm):
     """Form for registering a user."""
 
     username = StringField("Username", validators=[InputRequired()])
     password = PasswordField("Password", validators=[InputRequired()])
-
 
 
 class AddPostForm(FlaskForm):
