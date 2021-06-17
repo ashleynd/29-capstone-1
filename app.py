@@ -41,10 +41,16 @@ def add_user_to_g():
 
 @app.route("/")
 def homepage():
-    """Show homepage."""
+    """Show homepage. A recent list of posts for not logged-in users, most-recent first."""
 
-    return render_template("index.html")
+    posts = Post.query.order_by(Post.created_at.desc())
 
+    return render_template("index.html", posts=posts)
+
+
+
+#############################################################################
+# Registration Routes
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -90,6 +96,8 @@ def register():
     # else:
     #     return render_template("/users/register.html", form=form)
 
+#############################################################################
+# Login/Logout Routes
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -124,10 +132,29 @@ def login():
     #     return render_template(“users/login_user_form.html”, form=form)
 # end-login    
 
+@app.route("/logout")
+def logout():
+    """Logs user out and redirects to homepage."""
+
+    session.pop("user_id")
+
+    return redirect("/")
+
+
+#############################################################################
+# Feed Route
+
+# @app.route("/public-feed")
+# def public_feed():
+#     """Show recent list of posts for not logged-in users, most-recent first."""
+
+#     posts = Post.query.order_by(Post.created_at.desc())
+
+#     return render_template("index.html", posts=posts)
 
 @app.route("/feed")
 def feed():
-    """Show recent list of posts, most-recent first."""
+    """Show recent list of posts for logged-in users, most-recent first."""
 
     # """
     # Extracts the items (images) on the front page of Imgur.
@@ -144,44 +171,12 @@ def feed():
     if "user_id" not in session:
         flash("You must be logged in to view!")
         return redirect("/")
-    
 
     else:
         return render_template("/posts/feed.html", posts=posts)
 
-
-
-@app.route("/favorites")
-def favorites():
-    """Favorites page for logged-in users only."""
-
-    if "user_id" not in session:
-        flash("You must be logged in to view!")
-        return redirect("/")
-
-    else:
-        return render_template("/posts/favorites.html")
-
-@app.route("/buy")
-def purchase_post():
-    """Post with link to purchase."""
-
-    if "user_id" not in session:
-        flash("You must be logged in to view!")
-        return redirect("/")
-
-    else:
-        return render_template("/posts/purchase_post.html")
-
-
-@app.route("/logout")
-def logout():
-    """Logs user out and redirects to homepage."""
-
-    session.pop("user_id")
-
-    return redirect("/")
-
+#############################################################################
+# Post Routes
 
 @app.route('/add', methods=["GET", "POST"])
 def add_post():
@@ -210,9 +205,6 @@ def add_post():
         return render_template('/posts/add_post_form.html', form=form)
 
 
-
-
-
 @app.route("/myposts")
 def my_posts():
     """Posts page for logged-in users only."""
@@ -236,14 +228,47 @@ def posts_show(post_id):
     return render_template('posts/purchase_post.html', post=p)
 
 
-@app.route('/users/<int:user_id>/likes', methods=["GET"])
-def show_likes(user_id):
-    if not g.user:
-        flash("Access unauthorized.", "danger")
+@app.route("/buy")
+def purchase_post():
+    """Post with link to purchase."""
+
+    if "user_id" not in session:
+        flash("You must be logged in to view!")
         return redirect("/")
 
-    user = User.query.get_or_404(user_id)
-    return render_template('users/likes.html', user=user, likes=user.likes)
+    else:
+        return render_template("/posts/purchase_post.html")
+
+
+@app.route("/posts/<int:post_id>/delete", methods=["POST"])
+def delete_post(post_id):
+    """Delete post."""
+
+    post = Post.query.get(post_id)
+    if "user_id" not in session:
+        flash("You must be logged in to delete posts.")
+        return redirect("/")
+
+    form = DeleteForm()
+
+    if form.validate_on_submit():
+        db.session.delete(post)
+        db.session.commit()
+
+    return redirect("/myposts")
+
+#############################################################################
+# Like routes
+
+
+# @app.route('/users/<int:user_id>/likes', methods=["GET"])
+# def show_likes(user_id):
+#     if not g.user:
+#         flash("Access unauthorized.", "danger")
+#         return redirect("/")
+
+#     user = User.query.get_or_404(user_id)
+#     return render_template('users/likes.html', user=user, likes=user.likes)
 
 
 @app.route('/posts/<int:post_id>/like', methods=['POST'])
@@ -269,49 +294,17 @@ def add_like(post_id):
 
     return redirect("/")
 
-# @app.route('/posts/<int:post_id>/edit', methods=["POST"])
-# def posts_update(post_id):
-#     """Handle form submission for updating an existing post"""
 
-#     post = Post.query.get_or_404(post_id)
-#     post.title = request.form['title']
-#     post.content = request.form['content']
+@app.route("/favorites")
+def favorites():
+    """Favorites page for logged-in users only."""
 
-#     db.session.add(post)
-#     db.session.commit()
-#     flash(f"Post '{post.title}' edited.")
-
-#     return redirect(f"/users/{post.user_id}")
-
-
-# @app.route('/posts/<int:post_id>/delete', methods=["POST"])
-# def posts_destroy(post_id):
-#     """Handle form submission for deleting an existing post"""
-
-#     post = Post.query.get_or_404(post_id)
-
-#     db.session.delete(post)
-#     db.session.commit()
-#     flash(f"Post '{post.title} deleted.")
-
-#     return redirect(f"/users/{post.user_id}")
-
-@app.route("/posts/<int:post_id>/delete", methods=["POST"])
-def delete_post(post_id):
-    """Delete post."""
-
-    post = Post.query.get(post_id)
     if "user_id" not in session:
-        flash("You must be logged in to delete posts.")
+        flash("You must be logged in to view!")
         return redirect("/")
 
-    form = DeleteForm()
-
-    if form.validate_on_submit():
-        db.session.delete(post)
-        db.session.commit()
-
-    return redirect("/myposts")
+    else:
+        return render_template("/posts/favorites.html")
 
 
 

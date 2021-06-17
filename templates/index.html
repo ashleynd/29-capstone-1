@@ -27,5 +27,27 @@
   {% endif %} --> 
 
 
+  
+  <h1></h1>
+  {% for post in posts %}
+        <div class="card" style="width: 14rem;">
+          <div class="card-body">
+            <a href="/buy" style="text-decoration: none;">
+              <img src="{{ post.photo_url }}" class="card-img-top text-info" alt="image">
+              <h5 id="title" class="card-title text-dark">{{ post.title }}</h5>
+            </a>
+              <p class="card-text">{{ post.caption }}</p>
+              <p class="card-time"><small>By {{ post.user.username }} on {{ post.friendly_date }}</small></p>
+              <button id="shop-btn"><a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button>
+            </div>
+          </div>
+      {% else %}
+      <div class="col-12">No posts yet.</div>
+      {% endfor %}
+  
+  </div>
+
+
+  
 
 {% endblock %}
