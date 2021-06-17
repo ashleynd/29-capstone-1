@@ -43,6 +43,14 @@ u4 = User(
     password="$2b$12$JLNg50pdRXI6PORmkpPWa.ZqdUA1dg0xdsnb5TBJ5exS9JWaHTjQ6"
 )
 
+u5 = User(
+    first_name="Teddy",
+    last_name="Bear",
+    username="BestFriend103",
+    # password="abcd123"
+    password="$2b$12$JLNg50pdRXI6PORmkpPWa.ZqdUA1dg0xdsnb5TBJ5exS9JWaHTjQ6"
+)
+
 amy1 = Post(
     title="Butterfly wall",
     photo_url="https://img.ltwebstatic.com/images3_pi/2020/03/19/1584607766e1634741d4fc0f69ad9bcadb6d8d8b35_thumbnail_900x.webp",
@@ -179,14 +187,38 @@ violet4 = Post(
     user_id=4
 )
 
+teddy1 = Post(
+    title="Cuddly friends",
+    photo_url="https://i5.walmartimages.com/asr/b11bafda-ea1a-4c55-ad9c-92f798b25bd8.6bf26330f7e545e15fa5e9db87566de8.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
+    purchase_url="https://www.walmart.com/ip/Aurora-Cuddly-Friends-8-Bear/631671562?wmlspartner=wlpa&selectedSellerId=101004606",
+    caption="8 inch teddy bear.",
+    user_id=5
+)
+
+teddy2 = Post(
+    title="Forest Plush Bear",
+    photo_url="https://cdn.shopify.com/s/files/1/0416/0149/products/woodland-forest_plush_a_1024x1024.jpg?v=1595589729",
+    purchase_url="https://lambsivy.com/products/woodland-forest-plush-bear-oscar",
+    caption="Meet Oscar. He is a friendly charcoal gray furry bear.",
+    user_id=5
+)
+
+teddy3 = Post(
+    title="Giant Soft Plush Teddy Bear",
+    photo_url="https://target.scene7.com/is/image/Target/GUEST_27556c59-356f-44c0-9142-0bf4465e116c?fmt=webp&wid=1400&qlt=80",
+    purchase_url="https://www.target.com/p/best-choice-products-38in-giant-soft-plush-teddy-bear-stuffed-animal-toy-w-bow-tie-footprints-brown/-/A-82323459?ref=tgt_adv_XS000000&AFID=google_pla_df_free_online&CPNG=Toys&adgroup=86-2",
+    caption="Cute while wearing a red bowtie.",
+    user_id=5
+)
 
 
 
-db.session.add_all([u1, u2, u3, u4])
+
+db.session.add_all([u1, u2, u3, u4, u5])
 
 db.session.commit()
 
-db.session.add_all([amy1, amy2, amy3, marvin1, marvin2, marvin3, marvin4, rose1, rose2, rose3, rose4, rose5, rose6, violet1, violet2, violet3, violet4])
+db.session.add_all([amy1, amy2, amy3, marvin1, marvin2, marvin3, marvin4, rose1, rose2, rose3, rose4, rose5, rose6, violet1, violet2, violet3, violet4, teddy1, teddy2, teddy3])
 
 db.session.commit()
 

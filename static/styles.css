@@ -156,7 +156,7 @@ img {
     display: inline-block;
     margin: 5px;
     border-radius: 9px;
-    background-color: aliceblue;
+    background-color: #fffbf7;
     box-shadow: 0px 0px 0px grey;
     -webkit-transition:  box-shadow .25s ease-out;
     box-shadow: .8px .9px 3px grey;
@@ -320,11 +320,11 @@ img {
 
 #delete-btn {
     background-color: #ffffff;
-    padding: 5px 8px;
+    padding: 5px 7px;
     margin: 2px;
     border: grey;
     box-shadow: 1px 3px 5px grey;
-    border-radius: 80px;
+    border-radius: 100px;
     font-size: 12px;
 }
 
@@ -394,4 +394,16 @@ img {
 #register-btn:hover { 
      box-shadow: 1px 3px 8px grey;
     -webkit-transition:  box-shadow .1s ease-in;
+}
+
+.card-text {
+    line-height: 1.5;
+}
+
+.card-time {
+    line-height: 1.2;
+}
+
+#title:hover {
+    font-weight: bolder;
 }
