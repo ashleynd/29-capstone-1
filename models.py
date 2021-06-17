@@ -2,6 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from datetime import datetime
 
+
 GENERIC_IMAGE_URL = "https://bethshalomsynagogue.org/wp-content/uploads/sites/77/2019/07/cancelled-stamp-4-e1562879608638.png"
 
 db = SQLAlchemy()
@@ -26,8 +27,7 @@ class User(db.Model):
     password = db.Column(db.Text, nullable=False)
 
     posts = db.relationship('Post', backref='user', cascade='all, delete-orphan')
-    likes = db.relationship('Post', secondary="likes")
-
+    favorites = db.relationship('Post',secondary="favorites")
 
     def __repr__(self):
         return f"<User #{self.id}: {self.username}>"
@@ -78,11 +78,10 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
-    # photo_url = db.Column(db.Text, nullable=False)
     purchase_url = db.Column(db.Text)
     caption = db.Column(db.Text)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
     
     @property
     def friendly_date(self):
@@ -99,13 +98,11 @@ class Post(db.Model):
     def __repr__(self):
         return f"<Post Info: {self.id} {self.title} {self.purchase_url} {self.caption} {self.user_id}>"
 
+class Favorite(db.Model):
+    """Mapping user post favorites."""
 
-class Likes(db.Model):
-    """Mapping user likes to posts."""
-
-    __tablename__ = 'likes' 
+    __tablename__ = 'favorites' 
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='cascade'), unique=True)
-

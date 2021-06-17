@@ -1,25 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="d-flex justify-content-center">
-  <h1 class="display-4">Picslink</h1>
-</div>
-
-<div class="d-flex justify-content-center">
-  <h3 class="home-title">An image-sharing community with paths to purchasing options.</h3>
-</div>
-
-
-  <!-- {% if 'user_id' not in session %}
-  <div class="d-flex justify-content-center">
-    <button id="register-btn"><a href="/register" style="text-decoration: none;">Register</a></button>
-    <button id="register-btn"><a href="/login" style="text-decoration: none;">Login</a></button>
-  </div>
-  {% endif %} -->
-
 
   <div class="container">
     {% for post in posts %}
+    {% for post in favorites %}
           <div class="card" style="width: 14rem;">
             <div class="card-body">
               <a href="/buy" style="text-decoration: none;">
@@ -27,7 +12,14 @@
                 <h5 id="title" class="card-title text-dark">{{ post.title }}</h5>
               </a>
                 <p class="card-text">{{ post.caption }}</p>
-                <p class="card-time"><small>By {{ post.user.username }} on {{ post.friendly_date }}</small></p>
+                <p class="card-time"><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
+                {% if user.id == g.user.id %}
+              <form method="POST" action="/posts/{{ post.id }}/like" class="posts-like">
+                <button class="btn btn-sm {{'btn-primary'}}"><i class="fa fa-thumbs-up"></i></button>
+              </form>
+              {% endif %}
+              {% endfor %}
+                <button id="like-btn"><a href="/posts/{{ post.id }}/favorite" style="text-decoration: none;">⭐️</a></button>
                 <button id="shop-btn"><a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button>
               </div>
             </div>
@@ -35,10 +27,7 @@
         <div class="col-12">No posts yet.</div>
         {% endfor %}
   </div>
-  
-  </div>
-
-
-  
 
 {% endblock %}
+
+

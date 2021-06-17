@@ -13,7 +13,7 @@
             </a>
               <p class="card-text">{{ post.caption }}</p>
               <p class="card-time"><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
-              <button id="like-btn"><a href="#" style="text-decoration: none;">⭐️</a></button>
+              <button id="like-btn"><a href="/posts/{{ post.id }}/favorite" style="text-decoration: none;">⭐️</a></button>
               <button id="shop-btn"><a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button>
             </div>
           </div>

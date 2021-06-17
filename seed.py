@@ -67,6 +67,14 @@ u7 = User(
     password="$2b$12$g5fsMH1MuHUUIttfGIDJxuuoSgeBXTV2KrbDPx1r1G7sV6WDD90RO"
 )
 
+u8 = User(
+    first_name="Vanessa",
+    last_name="Cooper",
+    username="HappyGoLucky23",
+    # password="amazing88"
+    password="$2b$12$9X3V2cEI.CD045i9RnvyHer5c5E18yvQ/Rg4GZUkLBQ3AzmWhbR2y"
+)
+
 amy1 = Post(
     title="Butterfly wall",
     photo_url="https://img.ltwebstatic.com/images3_pi/2020/03/19/1584607766e1634741d4fc0f69ad9bcadb6d8d8b35_thumbnail_900x.webp",
@@ -283,17 +291,51 @@ mark3 = Post(
     user_id=7
 )
 
+vanessa1 = Post(
+    title="Hello Sunflower",
+    photo_url="https://secure.img1-fg.wfcdn.com/im/84593557/resize-h800%5Ecompr-r85/3854/38549984/Hello+Sunflower+by+Catherine+Fitzgerald+-+Wrapped+Canvas+Print.jpg",
+    purchase_url="https://www.wayfair.com/Artist-Lane--Hello-Sunflower-by-Catherine-Fitzgerald-Wrapped-Canvas-Print-75CF-P26-L1318-K~RTLA2659.html?refid=GX431921220665-RTLA2659&device=c&ptid=898501776691&network=g&targetid=pla-898501776691&channel=GooglePLA&ireid=38549984&fdid=1817&PiID%5B%5D=21018434&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9GIE-XroajRJt1eR2P9UOOzMdgmmIyAHhL1u6knRMgYW5esPCcf5ZsaAvDfEALw_wcB",
+    caption="Artwork by Catherine Fitzgerald",
+    user_id=8
+)
+
+vanessa2 = Post(
+    title="Box of Sunshine",
+    photo_url="https://www.openblooms.com/wp-content/uploads/2018/09/OB18-SS06.jpg",
+    purchase_url="https://www.openblooms.com/product/box-of-sunshine/?gclid=Cj0KCQjw5auGBhDEARIsAFyNm9GuIA9TxRN33EUJYLudx1JL87jKqJ0ED84TVl1Wmay8fC67_Pa1ch4aAniNEALw_wcB",
+    caption="Like lightning in a bottle, but sunshine in a box!",
+    user_id=8
+)
+
+vanessa3 = Post(
+    title="Perfect Sunflowers",
+    photo_url="https://cdn2.1800flowers.com/wcsstore/Flowers/images/catalog/161952stjv3x.jpg?width=545&height=597&quality=80&auto=webp&optimize={medium}",
+    purchase_url="https://www.1800flowers.com/southern-living-sunflowers-161952?adid=161952STJV3&adtype=pla",
+    caption="Arrangement from Southern Living",
+    user_id=8
+)
+
+vanessa4 = Post(
+    title="Obsessed with orchids",
+    photo_url="https://www.plants.com/images/1567116573346_20190829-1567116576103.webp",
+    purchase_url="https://www.plants.com/p/small-phalenopsis-orchid-pink-157694-2?pla=9386",
+    caption="Small Phalaenopsis orchid in pink.",
+    user_id=8
+)
 
 
-
-db.session.add_all([u1, u2, u3, u4, u5, u6, u7])
+db.session.add_all([u1, u2, u3, u4, u5, u6, u7, u8])
 
 db.session.commit()
 
-db.session.add_all([amy2, teddy1, mark1, sarah2, rose5, amy3, marvin4, rose3, 
-marvin2, violet2, mark2, marvin3, rose1, amy4, rose2, 
-rose4, rose6, violet1, violet4, 
-violet5, marvin1, teddy2, mark3, violet3, teddy3, amy1, sarah1])
+db.session.add_all([amy2, teddy1, vanessa1, mark1, 
+sarah2, rose5, amy3, marvin4, 
+rose3, marvin2, violet2, vanessa2, 
+mark2, marvin3, rose1, violet4, 
+amy4, rose2, vanessa3, rose4, 
+rose6, violet1, vanessa4, violet5, 
+marvin1, teddy2, mark3, violet3, 
+teddy3, amy1, sarah1])
 
 db.session.commit()
 

@@ -1,9 +1,12 @@
 from flask import Flask, render_template, redirect, session, flash, g, abort, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, db, User, Post
+# from flask.ext.login import current_user
 from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm, DeleteForm
 import requests
 from sqlalchemy.exc import IntegrityError
+
+
 # from werkzeug.wrappers import AuthorizationMixin
 # from imgurpython import ImgurClient
 # from secrets import client_id, client_secret, access_token, refresh_token
@@ -162,6 +165,39 @@ def favorites():
         return render_template("/posts/favorites.html")
 
 
+@app.route('/users/<int:user_id>/favorites', methods=["GET"])
+def show_favorites(user_id):
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    user = User.query.get_or_404(user_id)
+    return render_template('users/favorites.html', user=user, favorites=user.favorites)
+
+
+@app.route('/posts/<int:post_id>/favorite', methods=['POST'])
+def add_favorite(post_id):
+    """Toggle a favorited post for the currently-logged-in user."""
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    favorited_post = Post.query.get_or_404(post_id)
+    if favorited_post.user_id == g.user.id:
+        return abort(403)
+
+    user_favorites = g.user.favorites
+
+    if favorited_post in user_favorites:
+        g.user.favorites = [favorite for favorite in user_favorites if favorite != favorited_post]
+    else:
+        g.user.favorites.append(favorited_post)
+
+    db.session.commit()
+
+    return redirect("/")
+
 #############################################################################
 # Post Routes
 
@@ -247,44 +283,6 @@ def delete_post(post_id):
         db.session.commit()
 
     return redirect("/myposts")
-
-#############################################################################
-# Like routes
-
-
-@app.route('/users/<int:user_id>/likes', methods=["GET"])
-def show_likes(user_id):
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
-
-    user = User.query.get_or_404(user_id)
-    return render_template('users/likes.html', user=user, likes=user.likes)
-
-
-@app.route('/posts/<int:post_id>/like', methods=['POST'])
-def add_like(post_id):
-    """Toggle a liked post for the currently-logged-in user."""
-
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/feed")
-
-    liked_post = Post.query.get_or_404(post_id)
-    if liked_post.user_id == g.user.id:
-        return abort(403)
-
-    user_likes = g.user.likes
-
-    if liked_post in user_likes:
-        g.user.likes = [like for like in user_likes if like != liked_post]
-    else:
-        g.user.likes.append(liked_post)
-
-    db.session.commit()
-
-    return redirect("/feed")
-
 
 
 #############################################################################
