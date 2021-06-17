@@ -108,3 +108,4 @@ class Likes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='cascade'), unique=True)
+

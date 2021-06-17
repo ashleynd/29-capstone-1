@@ -51,6 +51,22 @@ u5 = User(
     password="$2b$12$JLNg50pdRXI6PORmkpPWa.ZqdUA1dg0xdsnb5TBJ5exS9JWaHTjQ6"
 )
 
+u6 = User(
+    first_name="Sarah",
+    last_name="Perkins",
+    username="SarahP99",
+    # password="peaches45"
+    password="$2b$12$g5fsMH1MuHUUIttfGIDJxuuoSgeBXTV2KrbDPx1r1G7sV6WDD90RO"
+)
+
+u7 = User(
+    first_name="Mark",
+    last_name="Wilkins",
+    username="MarkyMark300",
+    # password="mark600"
+    password="$2b$12$g5fsMH1MuHUUIttfGIDJxuuoSgeBXTV2KrbDPx1r1G7sV6WDD90RO"
+)
+
 amy1 = Post(
     title="Butterfly wall",
     photo_url="https://img.ltwebstatic.com/images3_pi/2020/03/19/1584607766e1634741d4fc0f69ad9bcadb6d8d8b35_thumbnail_900x.webp",
@@ -72,6 +88,14 @@ amy3 = Post(
     photo_url="https://i.etsystatic.com/8617622/r/il/d8ebd2/2966175412/il_1588xN.2966175412_mhjv.jpg",
     purchase_url="https://www.etsy.com/listing/682631150/personalized-bag-beach-bag-bridesmaid?gpla=1&gao=1&",
     caption="Personalized beach bag available.",
+    user_id=1
+)
+
+amy4 = Post(
+    title="Straw tote bag",
+    photo_url="https://cdn.shopify.com/s/files/1/0334/6579/4604/products/2780210876-V1_1230x.jpg?v=1623703526",
+    purchase_url="https://verabradley.com/products/straw-tote-bag-27802v36?variant=34830122352684&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9G74Fdxsy-eFDI-1seRPK2OXtw0AnD5WIRQLNPPnUU9q4_YrO_cQKYaAhcwEALw_wcB&gclsrc=aw.ds",
+    caption="Carrying sunscreen and beach reads just got so much cuter.",
     user_id=1
 )
 
@@ -100,7 +124,7 @@ marvin3 = Post(
 )
 
 marvin4 = Post(
-    title="Cereal Bowlsl",
+    title="Cereal Bowls",
     photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202112/0088/la-jolla-dinnerware-9-o.jpg",
     purchase_url="https://www.westelm.com/products/la-jolla-dinnerware-e2801/?catalogId=71&sku=9193676&cm_ven=PLA&cm_cat=Google&cm_pla=Kitchen%20%2B%20Dining%20%3E%20Outdoor%20Dinnerware%20%2B%20Drinkware&region_id=708530&cm_ite=9193676&gclid=CjwKCAjwwqaGBhBKEiwAMk-FtMiLXCHck-8mH_dCZZ5zT1BT-svllBSMv0gWWoOo0kyitkk7gi6VORoCSqMQAvD_BwE",
     caption="Admirable dinnerware with other colors.",
@@ -187,6 +211,14 @@ violet4 = Post(
     user_id=4
 )
 
+violet5 = Post(
+    title="French lavender calendar",
+    photo_url="https://assets.wsimgs.com/wsimgs/ab/images/dp/wcm/202113/0423/img37o.jpg",
+    purchase_url="https://www.williams-sonoma.com/products/french-lavender-essential-oils-collection-boxed-candle/?catalogId=79&sku=2462208&cm_ven=PLA&cm_cat=Google&cm_pla=Homekeeping%20%3E%20Candles%2C%20Diffusers%20%26%20Room%20Sprays&region_id=708530&cm_ite=2462208&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9EdJPV-6HEYqVPyqDcWk3AkMHgvSxQmZiTJVqneFECt51aqgFvxDbEaAsk4EALw_wcB",
+    caption="Williams Sonoma candle",
+    user_id=4
+)
+
 teddy1 = Post(
     title="Cuddly friends",
     photo_url="https://i5.walmartimages.com/asr/b11bafda-ea1a-4c55-ad9c-92f798b25bd8.6bf26330f7e545e15fa5e9db87566de8.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
@@ -211,14 +243,57 @@ teddy3 = Post(
     user_id=5
 )
 
+sarah1 = Post(
+    title="Beach towel",
+    photo_url="https://s7.landsend.com/is/image/LandsEnd/501758_A518_LF_95A?$1960x2940$",
+    purchase_url="https://www.landsend.com/products/rugby-stripe-beach-towel/id_325863?attributes=5575&source=GS&currency=USD&geo=US&skumv=5024281&promotion-code=KITE&promotion-pin=0&cm_mmc=139971612&SC=pla_brand&CMPGN=11304131253&ADGRP=113761308191&KYW=&MT=&DV=c&PID=5024281&TRGT=pla-1114290338360&CH=Google%20AdWords&_cclid=Google_Cj0KCQjw5auGBhDEARIsAFyNm9Eab2jfVji4Biy6REzfc2qWdPjWOcfxRCJDGMpKSozO4rxn1YCcMAMaAr9tEALw_wcB&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9Eab2jfVji4Biy6REzfc2qWdPjWOcfxRCJDGMpKSozO4rxn1YCcMAMaAr9tEALw_wcB",
+    caption="Perfect for the beach days",
+    user_id=6
+)
+
+sarah2 = Post(
+    title="Palm Leaf Beach towel",
+    photo_url="https://assets.ptimgs.com/ptimgs/rk/images/dp/wcm/202115/0273/img59o.jpg",
+    purchase_url="https://www.pbteen.com/products/the-emily-and-meritt-palm-leaf-beach-towel/?catalogId=21&sku=5438309&cm_ven=PLA&cm_cat=Google&cm_pla=Bath%20%26%20Beach%20%3E%20Beach%20Towels%20%26%20Accessories&region_id=708530&cm_ite=5438309_11182394393&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9GJHiTB56-beW7QcGQP-CPcvJ8XP8vxdRLjOXhPnakmHuHAFiCTSwMaAmAJEALw_wcB",
+    caption="Palm leaves and on pink background.",
+    user_id=6
+)
+
+mark1 = Post(
+    title="Whole bean coffee",
+    photo_url="https://images.food52.com/MD9mtYvym_STLz9E_Wxdfsr3e5c=/2000x0/e48c4bb0-7fca-4aeb-a180-aaf1113034d9--2019-0225_coffee-manufactory_whole-bean-single-coffee-blends_12-oz-2-pack_espresso-01_silo_ty-mecham_001.jpg",
+    purchase_url="https://food52.com/shop/products/5770-coffee-manufactory-whole-bean-coffee-blends-2-pack?sku=17068",
+    caption="From Coffee Manufactory, the very best one out there.",
+    user_id=7
+)
+
+mark2 = Post(
+    title="Medium Roast",
+    photo_url="https://cdn.shopify.com/s/files/1/1475/5488/products/MediumRoast-Front_1024x1024@2x.jpg?v=1559143447",
+    purchase_url="https://www.bonescoffee.com/products/bones-coffee-company-medium-roast-coffee?variant=25983152705&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic",
+    caption="Provides a rich and smooth taste.",
+    user_id=7
+)
+
+mark3 = Post(
+    title="Coffee from Jamaica",
+    photo_url="https://cdn.shopify.com/s/files/1/1475/5488/products/MediumRoast-Front_1024x1024@2x.jpg?v=1559143447",
+    purchase_url="https://www.coffeeam.com/products/jamaica-blue-mountain-blend-coffee?variant=31128683315302&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9Ga56WlN_1XGdud-45lCfZGLBwtep4GG5dwveHC-zvudmxnaMyVA6YaAtZiEALw_wcB",
+    caption="Jamaica Blue Mountain Blend Coffee",
+    user_id=7
+)
 
 
 
-db.session.add_all([u1, u2, u3, u4, u5])
+
+db.session.add_all([u1, u2, u3, u4, u5, u6, u7])
 
 db.session.commit()
 
-db.session.add_all([amy1, amy2, amy3, marvin1, marvin2, marvin3, marvin4, rose1, rose2, rose3, rose4, rose5, rose6, violet1, violet2, violet3, violet4, teddy1, teddy2, teddy3])
+db.session.add_all([amy2, teddy1, mark1, sarah2, rose5, amy3, marvin4, rose3, 
+marvin2, violet2, mark2, marvin3, rose1, amy4, rose2, 
+rose4, rose6, violet1, violet4, 
+violet5, marvin1, teddy2, mark3, violet3, teddy3, amy1, sarah1])
 
 db.session.commit()
 

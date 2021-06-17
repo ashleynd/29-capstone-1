@@ -39,16 +39,6 @@ def add_user_to_g():
         g.user = None
 
 
-@app.route("/")
-def homepage():
-    """Show homepage. A recent list of posts for not logged-in users, most-recent first."""
-
-    posts = Post.query.order_by(Post.created_at.desc())
-
-    return render_template("index.html", posts=posts)
-
-
-
 #############################################################################
 # Registration Routes
 
@@ -76,26 +66,6 @@ def register():
     return render_template('/users/register.html', form=form)
 
 
-    # form = RegisterForm()
-    # if form.validate_on_submit():
-    #     name = form.username.data
-    #     password = form.password.data
-    #     # first_name = form.first_name.data
-    #     # last_name = form.last_name.data
-
-    #     user = User.register(name, password)
-    #     db.session.add(user)
-    #     db.session.commit()
-
-    #     session["user_id"] = user.id
-
-    #     # on successful login, redirect to user feed page
-    #     flash('Welcome! Successfully Created Your Account!', "success")
-    #     return redirect("/feed")
-
-    # else:
-    #     return render_template("/users/register.html", form=form)
-
 #############################################################################
 # Login/Logout Routes
 
@@ -116,6 +86,7 @@ def login():
 
         if user:
             session["user_id"] = user.id  # keep logged in
+            flash(f"Welcome back, {user.first_name}!", "success")
             return redirect("/feed")
 
         else:
@@ -144,13 +115,14 @@ def logout():
 #############################################################################
 # Feed Route
 
-# @app.route("/public-feed")
-# def public_feed():
-#     """Show recent list of posts for not logged-in users, most-recent first."""
+@app.route("/")
+def homepage():
+    """Show homepage. A recent list of posts for not logged-in users, most-recent first."""
 
-#     posts = Post.query.order_by(Post.created_at.desc())
+    posts = Post.query.order_by(Post.created_at.desc())
 
-#     return render_template("index.html", posts=posts)
+    return render_template("index.html", posts=posts)
+
 
 @app.route("/feed")
 def feed():
@@ -174,6 +146,21 @@ def feed():
 
     else:
         return render_template("/posts/feed.html", posts=posts)
+
+#############################################################################
+# Favorites Route
+
+@app.route("/favorites")
+def favorites():
+    """Favorites page for logged-in users only."""
+
+    if "user_id" not in session:
+        flash("You must be logged in to view!")
+        return redirect("/")
+
+    else:
+        return render_template("/posts/favorites.html")
+
 
 #############################################################################
 # Post Routes
@@ -261,14 +248,14 @@ def delete_post(post_id):
 # Like routes
 
 
-# @app.route('/users/<int:user_id>/likes', methods=["GET"])
-# def show_likes(user_id):
-#     if not g.user:
-#         flash("Access unauthorized.", "danger")
-#         return redirect("/")
+@app.route('/users/<int:user_id>/likes', methods=["GET"])
+def show_likes(user_id):
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
 
-#     user = User.query.get_or_404(user_id)
-#     return render_template('users/likes.html', user=user, likes=user.likes)
+    user = User.query.get_or_404(user_id)
+    return render_template('users/likes.html', user=user, likes=user.likes)
 
 
 @app.route('/posts/<int:post_id>/like', methods=['POST'])
@@ -277,7 +264,7 @@ def add_like(post_id):
 
     if not g.user:
         flash("Access unauthorized.", "danger")
-        return redirect("/")
+        return redirect("/feed")
 
     liked_post = Post.query.get_or_404(post_id)
     if liked_post.user_id == g.user.id:
@@ -292,19 +279,7 @@ def add_like(post_id):
 
     db.session.commit()
 
-    return redirect("/")
-
-
-@app.route("/favorites")
-def favorites():
-    """Favorites page for logged-in users only."""
-
-    if "user_id" not in session:
-        flash("You must be logged in to view!")
-        return redirect("/")
-
-    else:
-        return render_template("/posts/favorites.html")
+    return redirect("/feed")
 
 
 
