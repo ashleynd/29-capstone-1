@@ -141,7 +141,7 @@ def feed():
     posts = Post.query.order_by(Post.created_at.desc())
 
     if "user_id" not in session:
-        flash("You must be logged in to view!")
+        flash("You must be logged in to view your feed!")
         return redirect("/")
 
     else:
@@ -155,7 +155,7 @@ def favorites():
     """Favorites page for logged-in users only."""
 
     if "user_id" not in session:
-        flash("You must be logged in to view!")
+        flash("You must be logged in to add favorites!")
         return redirect("/")
 
     else:
@@ -168,6 +168,10 @@ def favorites():
 @app.route('/add', methods=["GET", "POST"])
 def add_post():
     """Add a post."""
+
+    if "user_id" not in session:
+        flash("You must be logged in to add posts!")
+        return redirect("/")
 
     form = AddPostForm()
 

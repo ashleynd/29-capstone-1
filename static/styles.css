@@ -1,198 +1,7 @@
 body {
     background-image: linear-gradient(to right, #ff9fbe, #ffa9b3, #ffb4ab, #ffc1a9, #ffcdab, #ffd5af, #ffddb3, #ffe5b9, #ffebbe, #fff0c4, #fff6ca, #fffbd1);
-}
-
-.navbar {
-    background-color: #fffbf7;
-}
-
-img {
-    width: 200px;
-}
-
-.card {
-    display: inline-block;
-    margin: 5px;
-    background-color: aliceblue;
-    box-shadow: 0px 0px 0px grey;
-    -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-
-.card:hover{ 
-    box-shadow: 1px 8px 20px grey;
-    -webkit-transition:  box-shadow .25s ease-in;
-}
-
-.btn {
-    background-color: #fffbf7;
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    margin: 3px;
-    border-radius: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    box-shadow: 0px 0px 0px grey;
-   -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-.btn:hover { 
-     box-shadow: 1px 3px 8px grey;
-    -webkit-transition:  box-shadow .1s ease-in;
-}
-  body {
-    background-image: linear-gradient(to right, #ff9fbe, #ffa9b3, #ffb4ab, #ffc1a9, #ffcdab, #ffd5af, #ffddb3, #ffe5b9, #ffebbe, #fff0c4, #fff6ca, #fffbd1);
-}
-
-.navbar {
-    background-color: #fffbf7;
-}
-
-img {
-    width: 200px;
-}
-
-.card {
-    display: inline-block;
-    margin: 5px;
-    background-color: aliceblue;
-    box-shadow: 0px 0px 0px grey;
-    -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-
-.card:hover{ 
-    box-shadow: 1px 8px 20px grey;
-    -webkit-transition:  box-shadow .25s ease-in;
-}
-
-.btn {
-    background-color: #fffbf7;
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    margin: 3px;
-    border-radius: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    box-shadow: 0px 0px 0px grey;
-   -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-.btn:hover { 
-     box-shadow: 1px 3px 8px grey;
-    -webkit-transition:  box-shadow .1s ease-in;
-}
-  body {
-    background-image: linear-gradient(to right, #ff9fbe, #ffa9b3, #ffb4ab, #ffc1a9, #ffcdab, #ffd5af, #ffddb3, #ffe5b9, #ffebbe, #fff0c4, #fff6ca, #fffbd1);
-}
-
-.navbar {
-    background-color: #fffbf7;
-}
-
-img {
-    width: 200px;
-}
-
-.card {
-    display: inline-block;
-    margin: 5px;
-    border-radius: 9px;
-    background-color: aliceblue;
-    box-shadow: 0px 0px 0px grey;
-    -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-
-.card:hover{ 
-    box-shadow: 1px 8px 20px grey;
-    -webkit-transition:  box-shadow .25s ease-in;
-}
-
-.btn {
-    background-color: #fffbf7;
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    margin: 3px;
-    border-radius: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    box-shadow: 0px 0px 0px grey;
-   -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-.btn:hover { 
-     box-shadow: 1px 3px 8px grey;
-    -webkit-transition:  box-shadow .1s ease-in;
-}
-  body {
-    background-image: linear-gradient(to right, #ff9fbe, #ffa9b3, #ffb4ab, #ffc1a9, #ffcdab, #ffd5af, #ffddb3, #ffe5b9, #ffebbe, #fff0c4, #fff6ca, #fffbd1);
-}
-
-.navbar {
-    background-color: #fffbf7;
-}
-
-img {
-    width: 200px;
-}
-
-.card {
-    display: inline-block;
-    margin: 5px;
-    border-radius: 9px;
-    background-color: #fffbf7;
-    box-shadow: 0px 0px 0px grey;
-    -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-
-.card:hover{ 
-    box-shadow: 1px 8px 20px grey;
-    -webkit-transition:  box-shadow .25s ease-in;
-}
-
-.btn {
-    background-color: #fffbf7;
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    margin: 3px;
-    border-radius: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    box-shadow: 0px 0px 0px grey;
-   -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-.btn:hover { 
-     box-shadow: 1px 3px 8px grey;
-    -webkit-transition:  box-shadow .1s ease-in;
-}
-  body {
-    background-image: linear-gradient(to right, #ff9fbe, #ffa9b3, #ffb4ab, #ffc1a9, #ffcdab, #ffd5af, #ffddb3, #ffe5b9, #ffebbe, #fff0c4, #fff6ca, #fffbd1);
     font-family: Krub, Montserrat, Arial, serif;
 }
-
 .navbar {
     background-color: #fffbf7;
 }
@@ -201,12 +10,21 @@ img {
     width: 200px;
 }
 
+.home-title {
+    text-align: center;
+    line-height: 1.3;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+
+/* ############################################################################# */
+/* # Card */
+
 .card {
     display: inline-block;
-    margin: 6px;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    background-color: aliceblue;
+    margin: 9px;
+    background-color: #fffbf7;
     box-shadow: 0px 0px 0px grey;
     -webkit-transition:  box-shadow .25s ease-out;
     box-shadow: .8px .9px 3px grey;
@@ -217,6 +35,21 @@ img {
     box-shadow: 1px 8px 20px grey;
     -webkit-transition:  box-shadow .25s ease-in;
 }
+
+.card-text {
+    line-height: 1.5;
+}
+
+.card-time {
+    line-height: 1.2;
+}
+
+#title:hover {
+    font-weight: bolder;
+}
+
+/* ############################################################################# */
+/* # Buttons */
 
 .btn {
     background-color: #fffbf7;
@@ -233,59 +66,14 @@ img {
    -webkit-transition:  box-shadow .25s ease-out;
     box-shadow: .8px .9px 3px grey;
 }
-
 .btn:hover { 
-     box-shadow: 1px 3px 8px grey;
+    box-shadow: 1px 3px 8px grey;
     -webkit-transition:  box-shadow .1s ease-in;
 }
-  body {
-    background-image: linear-gradient(to right, #ff9fbe, #ffa9b3, #ffb4ab, #ffc1a9, #ffcdab, #ffd5af, #ffddb3, #ffe5b9, #ffebbe, #fff0c4, #fff6ca, #fffbd1);
-}
 
-.navbar {
-    background-color: #fffbf7;
-}
+/* ############################################################################# */
+/* # Like Buttons */
 
-img {
-    width: 200px;
-}
-
-.card {
-    display: inline-block;
-    margin: 5px;
-    background-color: aliceblue;
-    box-shadow: 0px 0px 0px grey;
-    -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-
-.card:hover{ 
-    box-shadow: 1px 8px 20px grey;
-    -webkit-transition:  box-shadow .25s ease-in;
-}
-
-#btn {
-    background-color: #fffbf7;
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    margin: 3px;
-    border-radius: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    box-shadow: 0px 0px 0px grey;
-   -webkit-transition:  box-shadow .25s ease-out;
-    box-shadow: .8px .9px 3px grey;
-}
-
-#btn:hover { 
-     box-shadow: 1px 3px 8px grey;
-    -webkit-transition:  box-shadow .1s ease-in;
-}
-  
 #like-btn {
     background-color: #fffefb;
     padding: 5px 11px;
@@ -318,6 +106,9 @@ img {
     -webkit-transition:  box-shadow .1s ease-in;
 }
 
+/* ############################################################################# */
+/* # Delete Buttons */
+
 #delete-btn {
     background-color: #ffffff;
     padding: 5px 7px;
@@ -334,9 +125,9 @@ img {
     -webkit-transition:  box-shadow .1s ease-in;
 }
 
-.home-title {
-    text-align: center;
-}
+
+/* ############################################################################# */
+/* # Purchase Buttons */
 
 #shop-btn {
     background-color: #fffefb;
@@ -353,6 +144,9 @@ img {
      background-color: #ffdfe8;
     -webkit-transition:  box-shadow .1s ease-in;
 }
+
+/* ############################################################################# */
+/* # Add Post Buttons */
 
 #add-btn {
     background-color: #fefbf6;
@@ -375,12 +169,17 @@ img {
     -webkit-transition:  box-shadow .1s ease-in;
 }
 
+/* ############################################################################# */
+/* # Register/Login Buttons */
+
 #register-btn {
     background-color: #fefbf6;
     border: none;
     color: #000000;
     padding: 10px 32px;
-    margin: 3px;
+    margin: 6px;
+    margin-bottom: 30px;
+    margin-top: 20px;
     border-radius: 20px;
     text-align: center;
     text-decoration: none;
@@ -396,14 +195,3 @@ img {
     -webkit-transition:  box-shadow .1s ease-in;
 }
 
-.card-text {
-    line-height: 1.5;
-}
-
-.card-time {
-    line-height: 1.2;
-}
-
-#title:hover {
-    font-weight: bolder;
-}

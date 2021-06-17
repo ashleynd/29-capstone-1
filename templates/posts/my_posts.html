@@ -27,26 +27,27 @@
 </div> -->
 
 <!-- <h1>{{ posts }}</h1> -->
-
-{% for post in posts %}
-  <form style="display:inline" action="/posts/{{ post.id }}/delete">
-  {{form.hidden_tag()}}
-  <div class="card" style="width: 14rem;">
-    <div class="card-body">
-      <a href="/buy" style="text-decoration: none;">
-        <img src="{{ post.photo_url }}" class="card-img-top text-info" alt="image">
-        <h5 id="title" class="card-title text-dark">{{ post.title }}</h5>
-      </a>
-      <p class="card-text">{{ post.caption }}</p>
-      <p class="card-time"><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
-          <button id="delete-btn" class="btn btn-outline-danger" formmethod="POST" formaction="/posts/{{ post.id }}/delete">❌</button>
-          <button id="shop-btn"><a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button>
-      </form>
+<div class="container">
+  {% for post in posts %}
+    <form style="display:inline" action="/posts/{{ post.id }}/delete">
+    {{form.hidden_tag()}}
+    <div class="card" style="width: 14rem;">
+      <div class="card-body">
+        <a href="/buy" style="text-decoration: none;">
+          <img src="{{ post.photo_url }}" class="card-img-top text-info" alt="image">
+          <h5 id="title" class="card-title text-dark">{{ post.title }}</h5>
+        </a>
+        <p class="card-text">{{ post.caption }}</p>
+        <p class="card-time"><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
+            <button id="delete-btn" class="btn btn-outline-danger" formmethod="POST" formaction="/posts/{{ post.id }}/delete">❌</button>
+            <button id="shop-btn"><a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button>
+        </form>
+      </div>
     </div>
-  </div>
-{% else %}
-<div class="col-12">No posts yet.</div>
-{% endfor %}
+  {% else %}
+  <div class="col-12">No posts yet.</div>
+  {% endfor %}
+</div>
 
 
 {% endblock %}
