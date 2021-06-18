@@ -99,6 +99,22 @@ u11 = User(
     password="$2b$12$BBAKwxYiZLe2AFM/kTWfVOyYpUsntqCzrJkrk37Ix4LFsLLLmLWye"
 )
 
+u12 = User(
+    first_name="Molly",
+    last_name="Appleseed",
+    username="MollyIsLucky",
+    # password="molly1234"
+    password="$2b$12$ixPbX3mYxDCKwqNnpsELW.rDYicsh5Jnk/fM8Dvc.P8Nz/tMyI0r2"
+)
+
+u13 = User(
+    first_name="Patty",
+    last_name="Anderson",
+    username="GirlWithAGreenThumb",
+    # password="green1"
+    password="$2b$12$VxYpulRVD7ScUxOhQzEwcOgc9NG9eDZyjvFtcdwYp4zzfhq6/8wdq"
+)
+
 amy1 = Post(
     title="Butterfly wall",
     photo_url="https://img.ltwebstatic.com/images3_pi/2020/03/19/1584607766e1634741d4fc0f69ad9bcadb6d8d8b35_thumbnail_900x.webp",
@@ -341,7 +357,7 @@ sarah3 = Post(
 
 sarah4 = Post(
     title="Sunset Light painting",
-    photo_url="https://cdn.shopify.com/s/files/1/1334/4597/products/Pink-Preserved-Ming-Fern_b84e6250-4fc2-4f2f-954d-0b66c8959bd4_979x1370.jpg?v=1619624505",
+    photo_url="https://www.erinhansonprints.com/Content/InventoryImages/Erin-Hanson-Sunset-Light.jpg",
     purchase_url="https://www.erinhansonprints.com/p/Sunset_Light?gshop=true",
     caption="Fine Art Prints by Erin Hanson.",
     user_id=6
@@ -540,23 +556,166 @@ bob4 = Post(
     user_id=11
 )
 
+molly1 = Post(
+    title="Bamboo Palm",
+    photo_url="https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_bamboo-palm_slate.jpg?ver=279483",
+    purchase_url="https://bloomscape.com/product/bamboo-palm/?attribute_pa_pot=slate&utm_source=Google%20Shopping&utm_campaign=Google%20Shopping%20Feed&utm_medium=cpc&utm_term=176756&&utm_source=google&utm_medium=cpc&utm_campaign=&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_qsfcMF3-2gZkd3FpaqUgOxr9NfODuns8F--i8b4lWgjrA7kzKf_nhoC-d0QAvD_BwE",
+    caption="Such a cool looking fern.",
+    user_id=12
+)
 
-db.session.add_all([u1, u2, u3, u4, u5, u6, u7, u8, u9, u10, u11])
+molly2 = Post(
+    title="Trailing Succulent",
+    photo_url="https://www.westelm.com/products/faux-trailing-succulent-pure-white-ceramic-planter-set-d7154/?catalogId=71&sku=5009695&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Planter%20%2B%20Plant%20Sets&cm_ite=5009695&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_lFSzxUeLFmJoDSAMoKjjADupmAsIe-RjDh43V_WS3-ahYiDK3SVsxoCq4wQAvD_BwE#viewLargerHeroOverlay",
+    purchase_url="https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_bamboo-palm_slate.jpg?ver=279483",
+    caption="For those who can't keep up with watering their plants.",
+    user_id=12
+)
+
+molly3 = Post(
+    title="Dracaena Rikki Cane",
+    photo_url="https://bloomscape.com/wp-content/uploads/2020/11/bloomscape_dracaena-rikki-cane_stone-scaled.jpg?ver=333303",
+    purchase_url="https://bloomscape.com/product/dracaena-rikki-cane/?attribute_pa_pot=stone&utm_source=Google%20Shopping&utm_campaign=Google%20Shopping%20Feed&utm_medium=cpc&utm_term=353800&&utm_source=google&utm_medium=cpc&utm_campaign=&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_i7NG0WobLrJXbf7rCv0g-k88_nen8zD-VWh_O-I5-xPEL7O6vTmwxoC4JAQAvD_BwE",
+    caption="Lookin pretty and proper and green.",
+    user_id=12
+)
+
+molly4 = Post(
+    title="Cast Iron Plant",
+    photo_url="https://cdn.shopify.com/s/files/1/0062/8532/8445/products/Cast_Iron_Plant_6_BB_1024x1024.jpg?v=1611594152",
+    purchase_url="https://www.brighterblooms.com/products/cast-iron-plant?variant=37941232926894&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_gC43yTPysmFqTFvqsKkrz758bGLzLVNdDwWjDFdkPayjkYGl2NpxhoC10IQAvD_BwE",
+    caption="Needing more greenery in our work from home office.",
+    user_id=12
+)
+
+molly4 = Post(
+    title="Monstera Leaf",
+    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202115/0522/img4z.jpg",
+    purchase_url="https://www.westelm.com/products/monstera-leaf-d3773/?catalogId=71&sku=241633&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Faux%20Plants%20%2B%20Flowers&region_id=708530&cm_ite=241633&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_rWgUksnX4ohiMcj_yObZgz26qlLRx7nhbEMWaK2gs0oIB4TWuNY6BoCj_4QAvD_BwE",
+    caption="Who else has a green thumb on here?",
+    user_id=12
+)
+
+molly5 = Post(
+    title="Leafy Green Plant",
+    photo_url="https://akamai-scene7.grandinroad.com/is/image/frontgate/166148_main?$wgih$",
+    purchase_url="https://www.grandinroad.com/leafy-green-plant/1337159?listIndex=0&offers_sku=166148&intlShippingCtx=US%7CUSD&SourceCode=ZZ753369&utm_source=google&utm_medium=organic&utm_campaign=unpaid&CAWELAID=120245400000304024",
+    caption="Decorative, artificial leafy lush plant.",
+    user_id=12
+)
+
+molly6 = Post(
+    title="Candid Green Plant",
+    photo_url="https://i.etsystatic.com/25794530/r/il/ba6e1d/2665944769/il_1588xN.2665944769_c5c4.jpg",
+    purchase_url="https://www.etsy.com/listing/880037212/green-plant?gpla=1&gao=1&",
+    caption="Serene and pretty.",
+    user_id=12
+)
+
+patty1 = Post(
+    title="The Farmstand",
+    photo_url="https://images.ctfassets.net/tjhwhh07rwer/2sOYcDUtPM9wwOi3zzNl9S/6109ef4b8fda2015119ad9a44a2e918a/Farmstand-24.jpg?w=1920&h=1920&q=70&fm=webp",
+    purchase_url="https://www.lettucegrow.com/the-farmstand/24/?utm_source=google&utm_medium=cpc&utm_campaign=smart%20shopping&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_uVgqez4CCQkVSGOSzJNFhBxP1i4jrp4Vde8wvPRk333o3XWD4K1eBoCbxEQAvD_BwE",
+    caption="Self-watering and self-fertilizing.",
+    user_id=13
+)
+
+patty1 = Post(
+    title="Bird of Paradise",
+    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202112/0158/img41o.jpg",
+    purchase_url="https://www.westelm.com/products/faux-potted-bird-of-paradise-plant-d11494/?catalogId=71&sku=7817814&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Faux%20Plants%20%2B%20Flowers&region_id=708530&cm_ite=7817814&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_j-LeeYYMv2O9k4iwOm1k0mMh09Oi0o99BNXxcd9F_npgaespF0IdBoCo30QAvD_BwE",
+    caption="Potted and 6ft. tall.",
+    user_id=13
+)
+
+patty2 = Post(
+    title="Zamioculcas Zamiifolia",
+    photo_url="https://cdn1.1800flowers.com/wcsstore/Flowers/images/catalog/157626mtempx.jpg?width=545&height=597&quality=80&auto=webp&optimize={medium}",
+    purchase_url="https://www.1800flowers.com/zz-plant-zamioculcas-zamiifolia-157626?adid=157626M&adtype=pla&r=googleplarkg&adcampaign=GSC-NE-FDAY+Gifts+SS&adcampaignid=13443042704&adgroupid=126926841081&addisttype=u&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_utlng5B3bq7jGGiy8k--cybYi_leSyVwxfV2_p35y5Kep-4_2yZrxoCjt0QAvD_BwE",
+    caption="The interesting Zz Plant.",
+    user_id=13
+)
+
+patty3 = Post(
+    title="Dried Pepper Grass",
+    photo_url="https://cdn.shopify.com/s/files/1/0051/8373/3878/products/060320_Lepidium_301_50_1949x.jpg?v=1623789524",
+    purchase_url="https://bloomist.com/products/dried-lepidium-pepper-grass?variant=34589077307555&utm_medium=adwords&utm_campaign=&utm_source=Google&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_oi2BNecQJSofl0QxIhjKXQvDf3jby1KmP3FUvwT2JIo33OvydSVqxoCcwwQAvD_BwE",
+    caption="at Bloomist",
+    user_id=13
+)
+
+patty4 = Post(
+    title="Majesty Palm",
+    photo_url="https://www.plants.com/images/1566416548156_20190821-1566416549015.webp",
+    purchase_url="https://www.plants.com/p/majesty-palm-floor-plant-157652-2?pla=9339&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_jqFgTQqKfUsx44HYJ_Uh7kDojLRx6xOYv2fag-6iNoFwjgXqS9ushoCEToQAvD_BwE",
+    caption="Floor plant",
+    user_id=13
+)
+
+patty5 = Post(
+    title="Potted Snake Plant",
+    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202115/0673/img39o.jpg",
+    purchase_url="https://www.westelm.com/products/faux-botanicals-potted-snake-plant-d5383/?catalogId=71&sku=7931581&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Faux%20Plants%20%2B%20Flowers&region_id=708530&cm_ite=7931581&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_lM9UPHMAMg_2yxrr9F6cQbHod0yJ2pHtueVgLEiUQBP0nGmEmLwHBoCu4oQAvD_BwE",
+    caption="The lovely botanicals.",
+    user_id=13
+)
+
+patty6 = Post(
+    title="The Emerald",
+    photo_url="https://www.openblooms.com/wp-content/uploads/2018/09/OB18-SS17.jpg",
+    purchase_url="https://www.openblooms.com/product/the-emerald/?gclid=CjwKCAjwiLGGBhAqEiwAgq3q_rCRuqWvUwWkDogcJfyQCoZM4SD2tajUtcQVwfnl9cvY1s4WEqn39hoCtpQQAvD_BwE",
+    caption="There's no place like home.",
+    user_id=13
+)
+
+patty7 = Post(
+    title="Fig Leaf",
+    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202122/0108/img1o.jpg",
+    purchase_url="https://www.westelm.com/products/faux-fiddle-plants-fig-leaf-d8917/?catalogId=71&sku=3042664&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Faux%20Plants%20%2B%20Flowers&region_id=708530&cm_ite=3042664&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_tjIkNp-QxAzB4n2MtUuwCs9qqgHcsWFlr0_iMjve99nh2cFTYfUwBoCkvYQAvD_BwE",
+    caption="This is 2ft high.",
+    user_id=13
+)
+
+patty8 = Post(
+    title="Gingko Branch",
+    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202103/0051/img85o.jpg",
+    purchase_url="https://www.westelm.com/products/faux-gingko-branches-d8680/?catalogId=71&sku=7885876&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Faux%20Plants%20%2B%20Flowers&region_id=708530&cm_ite=7885876&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_kQMXVBOnzslqa0SiyHWOZAvCp_ULD6Yl7eRYt_AsN6AdT__JcqX2hoCaHsQAvD_BwE",
+    caption="The upkeep is eternal.",
+    user_id=13
+)
+
+patty9 = Post(
+    title="Sympathy Potted Corn Plant",
+    photo_url="https://www.avasflowers.net/img/prod_img/avasflowers-sympathy-potted-corn-plant.jpg",
+    purchase_url="https://www.avasflowers.net/product/sympathy-potted-corn-plant/21582?gclid=CjwKCAjwiLGGBhAqEiwAgq3q_ivPPowm_faiiOViX8wkZliYWGnQvJ0fyh7p7Y7SC_CgJAqJuwf_iRoChHYQAvD_BwE",
+    caption="Is to serve as a tribute to a loved one lost.",
+    user_id=13
+)
+
+patty10 = Post(
+    title="Tula Planter",
+    photo_url="https://assets.pbimgs.com/pbimgs/rk/images/dp/wcm/202109/3472/img5o.jpg",
+    purchase_url="https://www.potterybarn.com/products/tula-planter-collection-fmp/?catalogId=84&sku=3212590&cm_ven=PLA&cm_cat=Google&cm_pla=Outdoor%20%26%20Garden%20%3E%20Planters&region_id=708530&cm_ite=3212590&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_gAbBmFHjIyReKiYs8okKGD-7Twyuk2OZGcMxobeWNC85JjeOe80jRoCW1wQAvD_BwE",
+    caption="Terra Cotta",
+    user_id=13
+)
+
+
+
+db.session.add_all([u1, u2, u3, u4, u5, u6, u7, u8, u9, u10, u11, u12, u13])
 
 db.session.commit()
 
-db.session.add_all([rose7, amy2, teddy1, bob3, vanessa1, gina5, mark1, 
-sarah2, rachel2, bob4, amy5, sarah1, gina4, violet6, rose5, sarah3, vanessa5, rachel5, amy3, marvin4, 
-rose3, marvin2, violet8, gina1, rachel1, violet2, vanessa2, 
-mark2, marvin3, rose1, violet4, 
-amy4, rose2, gina3, vanessa3, rose4, 
-rose6, violet1, bob2, sarah4, rachel3, vanessa4, violet5, 
-marvin1, rachel4, teddy2, mark3, violet3, 
-teddy3, violet7, gina2, bob1, rachel6, vanessa6, amy1])
+db.session.add_all([rose7, amy2, vanessa6, teddy1, bob3, patty6, vanessa1, amy1, gina5, mark1, 
+sarah2, patty4, rachel2, bob4, amy5, molly6, patty5, sarah1, gina4, violet6, rose5, sarah3, 
+vanessa5, rachel5, amy3, marvin4, patty3, rose3, marvin2, violet8, gina1, molly5, patty10,
+rachel1, violet2, patty9, vanessa2, mark2, marvin3, rose1, molly4, violet4, amy4,
+rose2, gina3, vanessa3, patty8, rose4, rose6, violet1, molly3, bob2, sarah4, rachel3,
+vanessa4, patty2, violet5, marvin1, rachel4, teddy2, mark3, patty7, violet3, teddy3, violet7, 
+gina2, molly2, patty1, bob1, rachel6, molly1])
 
 db.session.commit()
 
 # to run:
 # python3 seed.py
 
-# only works OUTSIDE of the venv environment

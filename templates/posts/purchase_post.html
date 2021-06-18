@@ -6,8 +6,6 @@
 
 {% for post in posts %}
 
-<h5>{{ post.title }}</h5>
-<p>{{ post.caption }}</p>
 <img src="{{ post.photo_url }}" class="card-img-top" alt="image">
 
 <p><small>By {{ post.user.username }} on {{ post.friendly_date }}</small></p>

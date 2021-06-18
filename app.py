@@ -1,15 +1,9 @@
 from flask import Flask, render_template, redirect, session, flash, g, abort, url_for
 from flask_debugtoolbar import DebugToolbarExtension
-from models import connect_db, db, User, Post
-# from flask.ext.login import current_user
-from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm, DeleteForm
+from models import connect_db, db, User, Post, Favorite
+from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm, DeleteForm, FavoriteForm
 import requests
 from sqlalchemy.exc import IntegrityError
-
-
-# from werkzeug.wrappers import AuthorizationMixin
-# from imgurpython import ImgurClient
-# from secrets import client_id, client_secret, access_token, refresh_token
 
 CURR_USER_KEY = "curr_user"
 
@@ -20,16 +14,10 @@ app.config["SQLALCHEMY_ECHO"] = True
 app.config["DEBUG_TB_INTERCEPT_REDIRECTS"] = False
 app.config["SECRET_KEY"] = "abc123"
 
-
 toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 db.create_all()
-
-
-# client = ImgurClient(client_id, client_secret, access_token, refresh_token)
-
-# BASE_HTTP_ENDPOINT = https://api.imgur.com/3/
 
 @app.before_request
 def add_user_to_g():
@@ -43,7 +31,7 @@ def add_user_to_g():
 
 
 #############################################################################
-# Registration Routes
+# Registration Route
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -63,7 +51,7 @@ def register():
             form.username.errors.append('Username taken.  Please pick another')
             return render_template('/users/register.html', form=form)
         session["user_id"] = user.id
-        flash('Welcome! Successfully Created Your Account!', "success")
+        flash('Welcome! Successfully Created Your Account. ✅', "success")
         return redirect("/feed")
 
     return render_template('/users/register.html', form=form)
@@ -76,8 +64,6 @@ def register():
 def login():
     """Produce login form or handle login."""
 
-    # session[CURR_USER_KEY] = user.id
-
     form = LoginForm()
 
     if form.validate_on_submit():
@@ -89,21 +75,13 @@ def login():
 
         if user:
             session["user_id"] = user.id  # keep logged in
-            flash(f"Welcome back, {user.first_name}!", "success")
+            flash(f"Welcome back, {user.first_name}! 👋🏻", "success")
             return redirect("/feed")
 
         else:
             form.username.errors = ["Incorrect name/password"]
 
     return render_template("/users/login.html", form=form)
-
-    #     do_login(user)
-    #     flash(f”Hello, {user.username}!“, “success”)
-    #     return redirect(f”/users/{user.id}“)
-    # else:
-    #     form.username.errors = [“Invalid username/password.“]
-    #     flash(“Invalid credentials.“, ‘danger’)
-    #     return render_template(“users/login_user_form.html”, form=form)
 # end-login    
 
 @app.route("/logout")
@@ -111,9 +89,8 @@ def logout():
     """Logs user out and redirects to homepage."""
 
     session.pop("user_id")
-
+    flash("You have successfully logged out. See you later! 👋🏻")
     return redirect("/")
-
 
 #############################################################################
 # Feed Route
@@ -123,24 +100,12 @@ def homepage():
     """Show homepage. A recent list of posts for not logged-in users, most-recent first."""
 
     posts = Post.query.order_by(Post.created_at.desc())
-
     return render_template("index.html", posts=posts)
-
 
 @app.route("/feed")
 def feed():
     """Show recent list of posts for logged-in users, most-recent first."""
 
-    # """
-    # Extracts the items (images) on the front page of Imgur.
-    # For logged-in users only.
-    # """
-    # url = "https://api.imgur.com/3/gallery/top/time/week/2?showViral=false&mature=false&album_previews=false"
-    # headers = {'Authorization': 'Client-ID 9b315a3d4a73278'}
-    # response = requests.request("GET", url, headers=headers)
-    # print(response)
-
-    # posts = Post.query.order_by(Post.created_at.desc()).limit(5).all()
     posts = Post.query.order_by(Post.created_at.desc())
 
     if "user_id" not in session:
@@ -148,58 +113,12 @@ def feed():
         return redirect("/")
 
     else:
-        print('**********************')
-        print(posts[1].photo_url)
-        print('**********************')
-        return render_template("/posts/feed.html", posts=posts)
+        # print('**********************')
+        # print(posts[1].photo_url)
+        # print('**********************')
+        form = DeleteForm()
+        return render_template("/posts/feed.html", posts=posts, form=form)
 
-#############################################################################
-# Favorites Route
-
-@app.route("/favorites")
-def favorites():
-    """Favorites page for logged-in users only."""
-
-    if "user_id" not in session:
-        flash("You must be logged in to add favorites!")
-        return redirect("/")
-
-    else:
-        return render_template("/posts/favorites.html")
-
-
-@app.route('/users/<int:user_id>/favorites', methods=["GET"])
-def show_favorites(user_id):
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
-
-    user = User.query.get_or_404(user_id)
-    return render_template('users/favorites.html', user=user, favorites=user.favorites)
-
-
-@app.route('/posts/<int:post_id>/favorite', methods=['POST'])
-def add_favorite(post_id):
-    """Toggle a favorited post for the currently-logged-in user."""
-
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
-
-    favorited_post = Post.query.get_or_404(post_id)
-    if favorited_post.user_id == g.user.id:
-        return abort(403)
-
-    user_favorites = g.user.favorites
-
-    if favorited_post in user_favorites:
-        g.user.favorites = [favorite for favorite in user_favorites if favorite != favorited_post]
-    else:
-        g.user.favorites.append(favorited_post)
-
-    db.session.commit()
-
-    return redirect("/")
 
 #############################################################################
 # Post Routes
@@ -241,7 +160,7 @@ def my_posts():
     """Posts page for logged-in users only."""
 
     if "user_id" not in session:
-        flash("You must be logged in to view!")
+        flash("You must be logged in to create posts!")
         return redirect("/")
 
     else:
@@ -270,6 +189,8 @@ def purchase_post():
     else:
         return render_template("/posts/purchase_post.html")
 
+#############################################################################
+# Delete Route
 
 @app.route("/posts/<int:post_id>/delete", methods=["POST"])
 def delete_post(post_id):
@@ -287,6 +208,42 @@ def delete_post(post_id):
         db.session.commit()
 
     return redirect("/myposts")
+    
+
+#############################################################################
+# Favorite Routes
+
+@app.route("/posts/<int:post_id>/favorite", methods=["POST"])
+def favorite_post(post_id):
+    """Favorite post."""
+
+    favorite_post = Post.query.get(post_id)
+    if "user_id" not in session:
+        flash("You must be logged in to favorite posts.")
+        return redirect("/")
+
+    form = FavoriteForm()
+
+    if form.validate_on_submit():
+        db.session.add(favorite_post)
+        db.session.commit()
+
+    return redirect("/favorites")
+
+
+@app.route("/favorites")
+def favorites():
+    """Favorites page for logged-in users only."""
+
+    if "user_id" not in session:
+        flash("You must be logged in to add favorites!")
+        return redirect("/")
+
+    else:
+        user_id = session["user_id"]
+        favorites = Favorite.query.filter(user_id==Favorite.user_id)
+        form = FavoriteForm()
+        return render_template("/posts/favorites.html", favorites=favorites, user_id=user_id, form=form)
 
 
 #############################################################################

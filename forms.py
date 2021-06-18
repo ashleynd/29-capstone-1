@@ -23,17 +23,8 @@ class AddPostForm(FlaskForm):
 
     title = StringField("Title", validators=[InputRequired()])
     photo_url = StringField("Photo URL", validators=[URL()])
-    # image = FileField("Image File", validators=[InputRequired()])
     purchase_url = StringField("Link to where to purchase item", validators=[URL()])
     caption = TextAreaField("Photo caption", validators=[Optional()])
-
-# class AddPostForm(FlaskForm):
-#     """Form for adding posts."""
-
-#     title = StringField("Title", validators=[InputRequired()])
-#     photo_url = StringField("Photo URL", validators=[URL()])
-#     purchase_url = StringField("Link to where to purchase item", validators=[URL()])
-#     caption = TextAreaField("Photo caption", validators=[Optional()])
 
 
 class EditPostForm(FlaskForm):
@@ -46,4 +37,7 @@ class EditPostForm(FlaskForm):
 
 class DeleteForm(FlaskForm):
     """Delete form."""
+
+class FavoriteForm(FlaskForm):
+    """Favorite form."""
 
