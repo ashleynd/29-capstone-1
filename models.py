@@ -3,7 +3,7 @@ from flask_bcrypt import Bcrypt
 from datetime import datetime
 
 
-GENERIC_IMAGE_URL = "https://bethshalomsynagogue.org/wp-content/uploads/sites/77/2019/07/cancelled-stamp-4-e1562879608638.png"
+GENERIC_IMAGE_URL = "https://www.analyticdesign.com/wp-content/uploads/2018/07/unnamed.gif"
 
 db = SQLAlchemy()
 
@@ -78,6 +78,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
+    photo_url = db.Column(db.Text, nullable=False)
     purchase_url = db.Column(db.Text)
     caption = db.Column(db.Text)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -89,11 +90,6 @@ class Post(db.Model):
 
         return self.created_at.strftime("%a %b %-d  %Y, %-I:%M %p")
     
-
-    def photo_url(self):
-        """Return image for post -- bespoke or generic."""
-        
-        return self.photo_url or GENERIC_IMAGE_URL
 
     def __repr__(self):
         return f"<Post Info: {self.id} {self.title} {self.purchase_url} {self.caption} {self.user_id}>"

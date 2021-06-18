@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, TextAreaField
+from wtforms import StringField, PasswordField, TextAreaField, FileField
 from wtforms.validators import InputRequired, Length, URL, Optional
 
 
@@ -23,8 +23,18 @@ class AddPostForm(FlaskForm):
 
     title = StringField("Title", validators=[InputRequired()])
     photo_url = StringField("Photo URL", validators=[URL()])
+    # image = FileField("Image File", validators=[InputRequired()])
     purchase_url = StringField("Link to where to purchase item", validators=[URL()])
     caption = TextAreaField("Photo caption", validators=[Optional()])
+
+# class AddPostForm(FlaskForm):
+#     """Form for adding posts."""
+
+#     title = StringField("Title", validators=[InputRequired()])
+#     photo_url = StringField("Photo URL", validators=[URL()])
+#     purchase_url = StringField("Link to where to purchase item", validators=[URL()])
+#     caption = TextAreaField("Photo caption", validators=[Optional()])
+
 
 class EditPostForm(FlaskForm):
     """Form for editing posts."""

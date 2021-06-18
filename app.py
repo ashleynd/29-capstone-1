@@ -148,6 +148,9 @@ def feed():
         return redirect("/")
 
     else:
+        print('**********************')
+        print(posts[1].photo_url)
+        print('**********************')
         return render_template("/posts/feed.html", posts=posts)
 
 #############################################################################
@@ -215,6 +218,7 @@ def add_post():
         # data = {k: v for k, v in form.data.items() if k != "csrf_token"}
         # new_post = Post(**data)
         title = form.title.data
+        # image = form.image.data
         photo_url = form.photo_url.data
         purchase_url = form.purchase_url.data
         caption = form.caption.data

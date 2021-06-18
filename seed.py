@@ -75,6 +75,14 @@ u8 = User(
     password="$2b$12$9X3V2cEI.CD045i9RnvyHer5c5E18yvQ/Rg4GZUkLBQ3AzmWhbR2y"
 )
 
+u9 = User(
+    first_name="Rachel",
+    last_name="Hawkin",
+    username="CouchPotato45",
+    # password="potato4"
+    password="$2b$12$hoPfb9r7O/fGGb8fcMc8aOF9f7Hswv5uS7R4sYwwuXiueYC7urzpu"
+)
+
 amy1 = Post(
     title="Butterfly wall",
     photo_url="https://img.ltwebstatic.com/images3_pi/2020/03/19/1584607766e1634741d4fc0f69ad9bcadb6d8d8b35_thumbnail_900x.webp",
@@ -104,6 +112,14 @@ amy4 = Post(
     photo_url="https://cdn.shopify.com/s/files/1/0334/6579/4604/products/2780210876-V1_1230x.jpg?v=1623703526",
     purchase_url="https://verabradley.com/products/straw-tote-bag-27802v36?variant=34830122352684&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9G74Fdxsy-eFDI-1seRPK2OXtw0AnD5WIRQLNPPnUU9q4_YrO_cQKYaAhcwEALw_wcB&gclsrc=aw.ds",
     caption="Carrying sunscreen and beach reads just got so much cuter.",
+    user_id=1
+)
+
+amy5 = Post(
+    title="Wine Cork Holder",
+    photo_url="https://www.vivaterra.com/medias/sys_master/images/images/hc7/h55/11559876362270/11559876362270.jpg",
+    purchase_url="https://www.vivaterra.com/p/V5297?aff=6443&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9Hv_73UcyLX1e0YiR5TE7XSO7uAAsmVcMiSjGWZOEN28gOH4KC4AS0aAvMOEALw_wcB",
+    caption="toss the cork into the frame for an added textured look.",
     user_id=1
 )
 
@@ -187,9 +203,17 @@ rose6 = Post(
     user_id=3
 )
 
+rose7 = Post(
+    title="Light Pink Tree Lamp",
+    photo_url="https://sp.apolloboxassets.com/vendor/product/productImages/2020-09-16/8J1TYArray_11.jpg",
+    purchase_url="https://www.theapollobox.com/product/sku1017200/light-pink-tree-lamp?gclid=Cj0KCQjw5auGBhDEARIsAFyNm9GVhXy5gv4c48Z2M87m13q4GSP3PYoZRL3dcg6cDcmUN12pO_tuqqQaArMJEALw_wcB",
+    caption="Functional Light and Decor",
+    user_id=3
+)
+
 violet1 = Post(
     title="Swirled Movement Glass Vase",
-    photo_url="https://images-na.ssl-images-amazon.com/images/I/61yUAt6V%2BsL._AC_SL1001_.jpg",
+    photo_url="https://s7d5.scene7.com/is/image/Anthropologie/60624079_053_b?$a15-pdp-detail-shot$&fit=constrain&fmt=webp&qlt=80&wid=1080",
     purchase_url="https://www.anthropologie.com/shop/swirled-movement-glass-vase?color=053&size=Small&inventoryCountry=US&countryCode=US&type=STANDARD&quantity=1",
     caption="Color in lavender, and made of glass.",
     user_id=4
@@ -224,6 +248,30 @@ violet5 = Post(
     photo_url="https://assets.wsimgs.com/wsimgs/ab/images/dp/wcm/202113/0423/img37o.jpg",
     purchase_url="https://www.williams-sonoma.com/products/french-lavender-essential-oils-collection-boxed-candle/?catalogId=79&sku=2462208&cm_ven=PLA&cm_cat=Google&cm_pla=Homekeeping%20%3E%20Candles%2C%20Diffusers%20%26%20Room%20Sprays&region_id=708530&cm_ite=2462208&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9EdJPV-6HEYqVPyqDcWk3AkMHgvSxQmZiTJVqneFECt51aqgFvxDbEaAsk4EALw_wcB",
     caption="Williams Sonoma candle",
+    user_id=4
+)
+
+violet6 = Post(
+    title="Eucalyptus Sheet set",
+    photo_url="https://cdn.shopify.com/s/files/1/2461/6249/products/Pupsinbed_2000x.jpg?v=1610145981",
+    purchase_url="https://sheetsgiggles.com/products/eucalyptus-lyocell-sheet-sets-purple?variant=31966205902942",
+    caption="In purple, of course!",
+    user_id=4
+)
+
+violet7 = Post(
+    title="Microfiber Fitted Sheet",
+    photo_url="https://media.kohlsimg.com/is/image/kohls/2471446_Eggplant?wid=1200&hei=1200&op_sharpen=1",
+    purchase_url="https://www.kohls.com/product/prd-2471446/fitted-microfiber-sheet.jsp?skuid=65384421&CID=seo_offers&utm_campaign=SAG&utm_medium=organic&utm_source=google&utm_product=65384421",
+    caption="Brushed finish sheet set.",
+    user_id=4
+)
+
+violet8 = Post(
+    title="Vera Wang",
+    photo_url="https://i5.walmartimages.com/asr/84b4d40f-d28c-452b-9b5e-711fe33ccbd7.375f40779266b35e83dc4b50f88f784f.jpeg?odnWidth=undefined&odnHeight=undefined&odnBg=ffffff",
+    purchase_url="https://www.walmart.com/ip/Vera-Wang-Princess-Eau-de-Toilette-Spray-for-Women-3-4-Fl-Oz/358507425?wmlspartner=wlpa&selectedSellerId=101052711",
+    caption="For the princess in you.",
     user_id=4
 )
 
@@ -264,6 +312,22 @@ sarah2 = Post(
     photo_url="https://assets.ptimgs.com/ptimgs/rk/images/dp/wcm/202115/0273/img59o.jpg",
     purchase_url="https://www.pbteen.com/products/the-emily-and-meritt-palm-leaf-beach-towel/?catalogId=21&sku=5438309&cm_ven=PLA&cm_cat=Google&cm_pla=Bath%20%26%20Beach%20%3E%20Beach%20Towels%20%26%20Accessories&region_id=708530&cm_ite=5438309_11182394393&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9GJHiTB56-beW7QcGQP-CPcvJ8XP8vxdRLjOXhPnakmHuHAFiCTSwMaAmAJEALw_wcB",
     caption="Palm leaves and on pink background.",
+    user_id=6
+)
+
+sarah3 = Post(
+    title="Ming Fern",
+    photo_url="https://cdn.shopify.com/s/files/1/1334/4597/products/Pink-Preserved-Ming-Fern_b84e6250-4fc2-4f2f-954d-0b66c8959bd4_979x1370.jpg?v=1619624505",
+    purchase_url="https://www.afloral.com/products/pink-preserved-ming-fern-leaf-bundle-16-22tall?gclid=Cj0KCQjw5auGBhDEARIsAFyNm9FNDtntIeKdM4_T_s1Wwtle9_KV861rII5bVFWt1ff1Ke1ev0_d10waAmMqEALw_wcB",
+    caption="Add a pop of color to your dried flower arrangements.",
+    user_id=6
+)
+
+sarah4 = Post(
+    title="Sunset Light painting",
+    photo_url="https://cdn.shopify.com/s/files/1/1334/4597/products/Pink-Preserved-Ming-Fern_b84e6250-4fc2-4f2f-954d-0b66c8959bd4_979x1370.jpg?v=1619624505",
+    purchase_url="https://www.erinhansonprints.com/p/Sunset_Light?gshop=true",
+    caption="Fine Art Prints by Erin Hanson.",
     user_id=6
 )
 
@@ -323,19 +387,84 @@ vanessa4 = Post(
     user_id=8
 )
 
+vanessa5 = Post(
+    title="Phalaenopsis Orchid",
+    photo_url="https://cdn2.1800flowers.com/wcsstore/Flowers/images/catalog/101828lwcx.jpg?width=545&height=597&quality=80&auto=webp&optimize={medium}",
+    purchase_url="https://www.1800flowers.com/beautiful-blue-phalaenopsis-orchid-157423?adid=157423LWC&adtype=pla&r=googleplarkg&adcampaign=GSC-NE-Plants+SS&adcampaignid=6737243696&adgroupid=82169669231&addisttype=u&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9FBVxiWplBZoSlG9rvxW4cV_X_99dUJPxskEcLQli7Ea40zJrgRQbkaAtj2EALw_wcB",
+    caption="In a beautiful blue color.",
+    user_id=8
+)
 
-db.session.add_all([u1, u2, u3, u4, u5, u6, u7, u8])
+vanessa6 = Post(
+    title="Goldfish Bowls",
+    photo_url="https://chairish-prod.freetls.fastly.net/image/product/sized/f79f69ef-4ca6-4d09-8c04-cc4d838f2364/goldfish-bowls-photograph-by-john-manno-3787?aspect=fit&width=1600&height=1600",
+    purchase_url="https://www.chairish.com/product/2805265/goldfish-bowls-photograph-by-john-manno?gclid=Cj0KCQjw5auGBhDEARIsAFyNm9FlR50ue9QVvfxSEIyeR8XrYmMhZvn_0lR4ocEHYGOyBgmDLud2QI0aAvr6EALw_wcB",
+    caption="Photograph by John Manno.",
+    user_id=8
+)
+
+
+rachel1 = Post(
+    title="Celsa",
+    photo_url="https://cdn-images.article.com/products/SKU13259/2890x1500/image54625.jpg?fit=max&w=2600&q=60&fm=webp",
+    purchase_url="https://www.article.com/pla/13259/celsa-blossom-pink-sofa?artcl_campignID=902447655&artcl_network=g&artcl_adgroupid=45321893032&artcl_keyword&artcl_source=google&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9HbZC1SgHVrqOmOwvXej7toLaxB_AWt__F2l5Y5GoeaDBYwAFDBafoaAjk-EALw_wcB",
+    caption="In Blossom Pink and Oak color.",
+    user_id=9
+)
+
+rachel2 = Post(
+    title="Sven",
+    photo_url="https://cdn-images.article.com/products/SKU350F/2890x1500/image39247.jpg?fit=max&w=4684&q=50",
+    purchase_url="https://www.article.com/pla/11810/sven-cascadia-blue-right-sectional-sofa",
+    caption="This is Cascadia Blue",
+    user_id=9
+)
+
+rachel3 = Post(
+    title="Novogratz",
+    photo_url="https://ashleyfurniture.scene7.com/is/image/AshleyFurniture/U600001079_1?$AFHS-PDP-Zoomed$",
+    purchase_url="https://www.ashleyfurniture.com/p/novogratz__upholstered_velvet_cassidy_convertible_couch/U600001079.html?mrkgcl=1069&product_id=U600001079&google_pla=true&&mrkgadid=1&mrkgen=&mrkgbflag=&mrkgcat=&&acctid=21700000001497894&dskeywordid=92700063943962509&lid=92700063943962509&ds_s_kwgid=58700007031165557&ds_s_inventory_feed_id=97700000003427474&dsproductgroupid=1280907904009&product_id=U600001079&merchid=102213865&prodctry=US&prodlang=en&channel=online&storeid=%7bproduct_store_id%7d&device=c&network=u&matchtype=&locationid=9051962&creative=517422017979&targetid=pla-1280907904009&campaignid=12867062344&adgroupid=121619829516&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9FiMnJM18hhD4uXdtd9KUsKOGJCG_a_Sb2duGh5gVaWIpKDQqIdmtIaAqjqEALw_wcB&gclsrc=aw.ds",
+    caption="Vintage in design, is upholstered.",
+    user_id=9
+)
+
+rachel4 = Post(
+    title="Timber",
+    photo_url="https://cdn-images.article.com/products/SKU12813/2890x1500/image46886.jpg?fit=max&w=2600&q=60&fm=webp",
+    purchase_url="https://www.article.com/pla/12813/timber-rain-cloud-gray-right-sectional",
+    caption="Perfect for a Sunday evening.",
+    user_id=9
+)
+
+rachel5 = Post(
+    title="Andes",
+    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202121/0046/img5z.jpg",
+    purchase_url="https://www.westelm.com/products/build-your-own-andes-sectional-petite-depth-h5875/?catalogId=71&sku=5585611&cm_ven=PLA&cm_cat=Google&cm_pla=Furniture%20%3E%20Sectionals&region_id=708530&cm_ite=5585611&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9HjDUF-LpSj5uZl6lKi3EPXQlDJJdJqmVKVWeUyucCmQIoYs9PrGWIaAnfkEALw_wcB",
+    caption="Distressed Velvet, Mineral Gray",
+    user_id=9
+)
+
+rachel6 = Post(
+    title="Syliva",
+    photo_url="https://secure.img1-fg.wfcdn.com/im/77542735/resize-h2458-w3200%5Ecompr-r85/9536/95366618/Syliva+80%27%27+Velvet+Recessed+Arm+Sleeper.jpg",
+    purchase_url="https://www.wayfair.com/furniture/pdp/orren-ellis-syliva-80-velvet-recessed-arm-sleeper-w002291296.html",
+    caption="80inch Velvet Recessed Arm Sleeper",
+    user_id=9
+)
+
+
+db.session.add_all([u1, u2, u3, u4, u5, u6, u7, u8, u9])
 
 db.session.commit()
 
-db.session.add_all([amy2, teddy1, vanessa1, mark1, 
-sarah2, rose5, amy3, marvin4, 
-rose3, marvin2, violet2, vanessa2, 
+db.session.add_all([rose7, amy2, teddy1, vanessa1, mark1, 
+sarah2, rachel2, amy5, sarah1, violet6, rose5, sarah3, vanessa5, rachel5, amy3, marvin4, 
+rose3, marvin2, violet8, rachel1, violet2, vanessa2, 
 mark2, marvin3, rose1, violet4, 
 amy4, rose2, vanessa3, rose4, 
-rose6, violet1, vanessa4, violet5, 
-marvin1, teddy2, mark3, violet3, 
-teddy3, amy1, sarah1])
+rose6, violet1, sarah4, rachel3, vanessa4, violet5, 
+marvin1, rachel4, teddy2, mark3, violet3, 
+teddy3, violet7, rachel6, vanessa6, amy1])
 
 db.session.commit()
 
