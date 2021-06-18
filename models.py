@@ -95,7 +95,7 @@ class Post(db.Model):
         return f"<Post Info: {self.id} {self.title} {self.purchase_url} {self.caption} {self.user_id}>"
 
 class Favorite(db.Model):
-    """Mapping user post favorites."""
+    """User post favorites."""
 
     __tablename__ = 'favorites' 
 
