@@ -27,7 +27,7 @@ class User(db.Model):
     password = db.Column(db.Text, nullable=False)
 
     posts = db.relationship('Post', backref='user', cascade='all, delete-orphan')
-    favorites = db.relationship('Post',secondary="favorites")
+    favorites = db.relationship('Post', secondary="favorites")
 
     def __repr__(self):
         return f"<User #{self.id}: {self.username}>"
@@ -51,7 +51,6 @@ class User(db.Model):
     @classmethod
     def authenticate(cls, username, password):
         """Validate that user exists & password is correct.
-
         Return user if valid; else return False.
         """
 
@@ -90,7 +89,6 @@ class Post(db.Model):
 
         return self.created_at.strftime("%a %b %-d  %Y, %-I:%M %p")
     
-
     def __repr__(self):
         return f"<Post Info: {self.id} {self.title} {self.purchase_url} {self.caption} {self.user_id}>"
 

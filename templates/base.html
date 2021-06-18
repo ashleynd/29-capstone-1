@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>
-    Picslink {% block title %}{% endblock %}
+    Picslink 📷{% block title %}{% endblock %}
   </title>
   <head>
   <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
@@ -18,29 +18,21 @@
   {% if 'user_id' not in session %}
     <div class="navbar">
       <div class="navbar-container">
-        <div class="navbar-brand"><a class="text-dark" href="/" style="text-decoration: none;"><strong>Picslink</strong></a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/register" style="text-decoration: none;"><strong>Sign Up</strong></a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/login" style="text-decoration: none;"><strong>Login</strong></a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/" style="text-decoration: none;"><strong>Picslink 📷</strong></a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/register" style="text-decoration: none;"><strong>Sign Up ☑️</strong></a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/login" style="text-decoration: none;"><strong>Login ➡️</strong></a></div>
       </div>
     </div>
-
     {% endif %}
 
   {% if 'user_id' in session %}
     <div class="navbar">
       <div class="navbar-container">
-        <!-- <div class="navbar-brand"><a class="text-white" href="/">Picslink</a></div> -->
-        <div class="navbar-brand"><a class="text-dark" href="/feed" style="text-decoration: none;">Feed</a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/myposts" style="text-decoration: none;">My Posts</a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/favorites" style="text-decoration: none;">My Favorites</a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/add" style="text-decoration: none;">New Post</a></div>
-        <div class="navbar-brand"><a class="text-dark" href="/logout" style="text-decoration: none;">Logout</a></div>
-        <!-- {% for post in posts %}
-        {{ post.user.full_name }}
-        {% endfor %} -->
-        <!-- {% for user in users %}
-        {{ user.first_name }}
-        {% endfor %} -->
+        <div class="navbar-brand"><a class="text-dark" href="/feed" style="text-decoration: none;"><strong>Feed 👀</strong></a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/myposts" style="text-decoration: none;"><strong>My Posts 📸</strong></a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/favorites" style="text-decoration: none;"><strong>My Favorites ⭐️</strong></a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/add" style="text-decoration: none;"><strong>New Post ✍🏻</strong></a></div>
+        <div class="navbar-brand"><a class="text-dark" href="/logout" style="text-decoration: none;"><strong>Logout ⬅️</strong></a></div>
       </div>
     </div>
   {% endif %}

@@ -566,8 +566,8 @@ molly1 = Post(
 
 molly2 = Post(
     title="Trailing Succulent",
-    photo_url="https://www.westelm.com/products/faux-trailing-succulent-pure-white-ceramic-planter-set-d7154/?catalogId=71&sku=5009695&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Planter%20%2B%20Plant%20Sets&cm_ite=5009695&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_lFSzxUeLFmJoDSAMoKjjADupmAsIe-RjDh43V_WS3-ahYiDK3SVsxoCq4wQAvD_BwE#viewLargerHeroOverlay",
-    purchase_url="https://bloomscape.com/wp-content/uploads/2020/08/bloomscape_bamboo-palm_slate.jpg?ver=279483",
+    photo_url="https://assets.weimgs.com/weimgs/ab/images/wcm/products/202117/0098/img6o.jpg",
+    purchase_url="https://www.westelm.com/products/faux-trailing-succulent-pure-white-ceramic-planter-set-d7154/?catalogId=71&sku=5009695&cm_ven=PLA&cm_cat=Google&cm_pla=Garden%20%3E%20Planter%20%2B%20Plant%20Sets&cm_ite=5009695&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_lFSzxUeLFmJoDSAMoKjjADupmAsIe-RjDh43V_WS3-ahYiDK3SVsxoCq4wQAvD_BwE#viewLargerHeroOverlay",
     caption="For those who can't keep up with watering their plants.",
     user_id=12
 )
