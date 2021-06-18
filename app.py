@@ -231,7 +231,7 @@ def favorites():
 
     else:
         user_id = session["user_id"]
-        favorites = Favorite.query.filter(user_id==Favorite.user_id)
+        favorites = Favorite.query.filter(user_id==Favorite.post_id)
         form = FavoriteForm()
         return render_template("/posts/favorites.html", favorites=favorites, user_id=user_id, form=form)
 
