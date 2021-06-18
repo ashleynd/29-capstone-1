@@ -83,6 +83,22 @@ u9 = User(
     password="$2b$12$hoPfb9r7O/fGGb8fcMc8aOF9f7Hswv5uS7R4sYwwuXiueYC7urzpu"
 )
 
+u10 = User(
+    first_name="Gina",
+    last_name="Nelson",
+    username="CrazyCatLady80",
+    # password="cats10"
+    password="$2b$12$gLPFfwcvCjHTsz.iV0wTTu7yXlEw4y7dDQ2b433lhBVSGSvz8zwZm"
+)
+
+u11 = User(
+    first_name="Bob",
+    last_name="Baker",
+    username="BakerBob300",
+    # password="cookie12"
+    password="$2b$12$BBAKwxYiZLe2AFM/kTWfVOyYpUsntqCzrJkrk37Ix4LFsLLLmLWye"
+)
+
 amy1 = Post(
     title="Butterfly wall",
     photo_url="https://img.ltwebstatic.com/images3_pi/2020/03/19/1584607766e1634741d4fc0f69ad9bcadb6d8d8b35_thumbnail_900x.webp",
@@ -452,19 +468,91 @@ rachel6 = Post(
     user_id=9
 )
 
+gina1 = Post(
+    title="Tiger in the Jungle",
+    photo_url="https://desenio.com/bilder/artiklar/zoom/3147_2.jpg?imgwidth=435&qt=",
+    purchase_url="https://desenio.com/us/tiger-in-jungle-30x40",
+    caption="See who's creepin in the jungle.",
+    user_id=10
+)
 
-db.session.add_all([u1, u2, u3, u4, u5, u6, u7, u8, u9])
+gina2 = Post(
+    title="Tiger Landscape",
+    photo_url="https://i.etsystatic.com/15309855/r/il/a13fa9/3116849875/il_1588xN.3116849875_pfao.jpg",
+    purchase_url="https://www.etsy.com/listing/1015708575/tiger-landscape?gpla=1&gao=1&",
+    caption="Design of a tiger in the jungle surrounded by flowers and animals.",
+    user_id=10
+)
+
+gina3 = Post(
+    title="Big black cat",
+    photo_url="https://desenio.com/bilder/artiklar/zoom/2273_2.jpg?imgwidth=435&qt=",
+    purchase_url="https://desenio.com/us/black-panther-50x70",
+    caption="Black panther poster",
+    user_id=10
+)
+
+gina4 = Post(
+    title="Meet Loki",
+    photo_url="https://s7d5.scene7.com/is/image/Anthropologie/48605034_020_b?$a15-pdp-detail-shot$&fit=constrain&fmt=webp&qlt=80&wid=1080",
+    purchase_url="https://www.anthropologie.com/shop/loki-the-lion-stuffed-animal?color=020&size=One%20Size&inventoryCountry=US&countryCode=US&type=STANDARD&quantity=1",
+    caption="This is Loki the Lion Stuffed Animal.",
+    user_id=10
+)
+
+gina5 = Post(
+    title="Tiger Plushie",
+    photo_url="https://canary.contestimg.wish.com/api/webimage/5a698f8cd20e93700a9b2767-large.jpg?cache_buster=85d0d13fa445b29cd94ff96be2f8dff8",
+    purchase_url="https://www.wish.com/product/5a698f8cd20e93700a9b2767?from_ad=goog_shopping&_display_country_code=US&_force_currency_code=USD&pid=googleadwords_int&c=%7BcampaignId%7D&ad_cid=5a698f8cd20e93700a9b2767&ad_cc=US&ad_lang=EN&ad_curr=USD&ad_price=19.00&campaign_id=7203534630&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_pBmXRzsGkYOhvinnt3uUE9my57hJjfmUR_Bdv77atWY9dwcmHhThBoC8o4QAvD_BwE&hide_login_modal=true&share=web",
+    caption="Soft and cuddly kids toys for those who love tigers.",
+    user_id=10
+)
+
+bob1 = Post(
+    title="Magical Day cookies",
+    photo_url="https://cdn2.cheryls.com/wcsstore/CherylAndCompany/images/catalog/cco_VDY20_215631x.jpg?width=545&height=597&quality=80&auto=webp&optimize={medium}",
+    purchase_url="https://www.cheryls.com/have-a-magical-day-cookie-pail-cco-vdy20-215631?selectSku=215631&r=mercentfeed&camid=471_6542825959_215631&g_acctid=3302942173&g_campaignid=6542825959&g_adgroupid=81667072954&g_adid=385700845897&gclid=CjwKCAjwiLGGBhAqEiwAgq3q_nhK_jJS_G06KDdeyLPVfYau6G8sw_Pzxzie219f3y7MwtCFACUsxxoCeaIQAvD_BwE",
+    caption="To remind you to have a magical day!",
+    user_id=11
+)
+
+bob2 = Post(
+    title="Classic Cookie basket",
+    photo_url="https://cdn1.harryanddavid.com/wcsstore/HarryAndDavid/images/catalog/18_26633_30XP_01ex.jpg?width=545&height=597&quality=80&auto=webp&optimize={medium}",
+    purchase_url="https://www.harryanddavid.com/h/bakery/cookies-brownies/26633?utm_medium=organic&utm_source=google&utm_campaign=organicshopping",
+    caption="Sweet tooth cookie basket gift.",
+    user_id=11
+)
+
+bob3 = Post(
+    title="Gourmet Cookie Basket",
+    photo_url="https://assets.wsimgs.com/wsimgs/ab/images/dp/wcm/202112/0052/img48o.jpg",
+    purchase_url="https://www.williams-sonoma.com/products/assorted-gourmet-cookie-box/?catalogId=79&sku=8625243&cm_ven=FreePLA&cm_cat=Google&cm_pla=Food%20%3E%20Cookies&region_id=708530",
+    caption="With (almost) all the colors of the cookie rainbow.",
+    user_id=11
+)
+
+bob4 = Post(
+    title="Buttercream Cookies",
+    photo_url="https://cdn1.cheryls.com/wcsstore/CherylAndCompany/images/catalog/cco_FAL21_226621x.jpg?width=545&height=597&quality=80&auto=webp&optimize={medium}",
+    purchase_url="https://www.cheryls.com/buttercream-frosted-salty-caramel-cookie-sampler-fal21-226621?selectSku=226621&utm_medium=organic&utm_source=google&utm_campaign=organicshopping",
+    caption="Cookie sampler.",
+    user_id=11
+)
+
+
+db.session.add_all([u1, u2, u3, u4, u5, u6, u7, u8, u9, u10, u11])
 
 db.session.commit()
 
-db.session.add_all([rose7, amy2, teddy1, vanessa1, mark1, 
-sarah2, rachel2, amy5, sarah1, violet6, rose5, sarah3, vanessa5, rachel5, amy3, marvin4, 
-rose3, marvin2, violet8, rachel1, violet2, vanessa2, 
+db.session.add_all([rose7, amy2, teddy1, bob3, vanessa1, gina5, mark1, 
+sarah2, rachel2, bob4, amy5, sarah1, gina4, violet6, rose5, sarah3, vanessa5, rachel5, amy3, marvin4, 
+rose3, marvin2, violet8, gina1, rachel1, violet2, vanessa2, 
 mark2, marvin3, rose1, violet4, 
-amy4, rose2, vanessa3, rose4, 
-rose6, violet1, sarah4, rachel3, vanessa4, violet5, 
+amy4, rose2, gina3, vanessa3, rose4, 
+rose6, violet1, bob2, sarah4, rachel3, vanessa4, violet5, 
 marvin1, rachel4, teddy2, mark3, violet3, 
-teddy3, violet7, rachel6, vanessa6, amy1])
+teddy3, violet7, gina2, bob1, rachel6, vanessa6, amy1])
 
 db.session.commit()
 
