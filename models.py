@@ -80,6 +80,7 @@ class Post(db.Model):
     photo_url = db.Column(db.Text, nullable=False)
     purchase_url = db.Column(db.Text)
     caption = db.Column(db.Text)
+    
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))
     

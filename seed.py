@@ -718,4 +718,3 @@ db.session.commit()
 
 # to run:
 # python3 seed.py
-

@@ -24,7 +24,8 @@ db.create_all()
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    """Register user."""
+    """Registers a new user."""
+
     form = RegisterForm()
     if form.validate_on_submit():
         username = form.username.data
@@ -51,7 +52,7 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    """Produce login form or handle login."""
+    """Login form to handle login."""
 
     form = LoginForm()
 
@@ -82,18 +83,18 @@ def logout():
     return redirect("/")
 
 #############################################################################
-# Feed Route
+# Feed Routes
 
 @app.route("/")
 def homepage():
-    """Show homepage. A recent list of posts for not logged-in users, most-recent first."""
+    """Shows a public list of posts for not logged-in users, most-recent first."""
 
     posts = Post.query.order_by(Post.created_at.desc())
     return render_template("index.html", posts=posts)
 
 @app.route("/feed")
 def feed():
-    """Show recent list of posts for logged-in users, most-recent first."""
+    """Shows list of posts for logged-in users, most-recent first."""
 
     posts = Post.query.order_by(Post.created_at.desc())
 
@@ -114,7 +115,7 @@ def feed():
 
 @app.route('/add', methods=["GET", "POST"])
 def add_post():
-    """Add a post."""
+    """Adds a post."""
 
     if "user_id" not in session:
         flash("🚫 You must be logged in to create posts.")
@@ -146,7 +147,7 @@ def add_post():
 
 @app.route("/myposts")
 def my_posts():
-    """Posts page for logged-in users only."""
+    """Page for posts the user created."""
 
     if "user_id" not in session:
         flash("🚫 You must be logged in to create posts.")
@@ -183,7 +184,7 @@ def my_posts():
 
 @app.route("/posts/<int:post_id>/delete", methods=["POST"])
 def delete_post(post_id):
-    """Delete post."""
+    """Deletes a post the user created."""
 
     post = Post.query.get(post_id)
     if "user_id" not in session:
@@ -196,18 +197,18 @@ def delete_post(post_id):
         db.session.delete(post)
         db.session.commit()
 
-    flash(f"Post sucessfully deleted. ☑️")
+    flash(f"Post successfully deleted. ☑️")
     return redirect("/myposts")
     
 
 #############################################################################
 # Favorite Routes
 
-@app.route("/posts/<int:post_id>/favorite", methods=["POST"])
-def favorite_post(post_id):
+@app.route("/posts/<int:post_id>/favorite", methods=["GET", "POST"])
+def add_favorite(post_id):
     """Favorite post."""
 
-    favorite_post = Post.query.get(post_id)
+    favorites = Post.query.get(post_id)
     if "user_id" not in session:
         flash("🚫 You must be logged in to favorite posts.")
         return redirect("/")
@@ -215,15 +216,14 @@ def favorite_post(post_id):
     form = FavoriteForm()
 
     if form.validate_on_submit():
-        db.session.add(favorite_post)
+        db.session.add(favorites)
         db.session.commit()
-        flash(f"{favorite_post.title} added to Favorites. 👏🏻")
+        flash(f"{favorites.title} added to Favorites. 👏🏻")
         return redirect("/feed")
 
-
 @app.route("/favorites")
-def favorites():
-    """Favorites page for logged-in users only."""
+def show_favorites():
+    """Page to show all the posts the user favorited."""
 
     if "user_id" not in session:
         flash("🚫 You must be logged in to add favorites.")
@@ -231,7 +231,7 @@ def favorites():
 
     else:
         user_id = session["user_id"]
-        favorites = Favorite.query.filter(user_id==Favorite.post_id)
+        favorites = Favorite.query.filter(user_id==Favorite.user_id)
         form = FavoriteForm()
         return render_template("/posts/favorites.html", favorites=favorites, user_id=user_id, form=form)
 
