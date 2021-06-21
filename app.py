@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, session, flash, abort, url_for
 from flask_debugtoolbar import DebugToolbarExtension
-from models import connect_db, db, User, Post, Favorite
-from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm, DeleteForm, FavoriteForm
+from models import Favorite, connect_db, db, User, Post
+from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm, DeleteForm
 import requests
 from sqlalchemy.exc import IntegrityError
 
@@ -204,22 +204,20 @@ def delete_post(post_id):
 #############################################################################
 # Favorite Routes
 
-@app.route("/posts/<int:post_id>/favorite", methods=["GET", "POST"])
+@app.route("/posts/<int:post_id>/favorite", methods=["POST"])
 def add_favorite(post_id):
     """Favorite post."""
 
-    favorites = Post.query.get(post_id)
     if "user_id" not in session:
         flash("🚫 You must be logged in to favorite posts.")
         return redirect("/")
 
-    form = FavoriteForm()
-
-    if form.validate_on_submit():
-        db.session.add(favorites)
-        db.session.commit()
-        flash(f"{favorites.title} added to Favorites. 👏🏻")
-        return redirect("/feed")
+    # post_id = Post.query.get(post_id)
+    favorite = Favorite(user_id = session["user_id"], post_id=post_id)
+    db.session.add(favorite)
+    db.session.commit()
+    # flash(f"{favorite.title} added to Favorites. 👏🏻")
+    return redirect("/favorites")
 
 @app.route("/favorites")
 def show_favorites():
@@ -231,9 +229,12 @@ def show_favorites():
 
     else:
         user_id = session["user_id"]
-        favorites = Favorite.query.filter(user_id==Favorite.user_id)
-        form = FavoriteForm()
-        return render_template("/posts/favorites.html", favorites=favorites, user_id=user_id, form=form)
+        # favorites = Favorite.query.filter(Favorite.user_id==user_id)
+        user = User.query.get_or_404(user_id)
+        # print('~~~~~~~~~~~~~~~~~~~~~')
+        # print(user)
+        # print('~~~~~~~~~~~~~~~~~~~~~')
+        return render_template("/posts/favorites.html", user=user)
 
 
 #############################################################################

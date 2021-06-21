@@ -5,24 +5,12 @@
 <h1>My Favorites</h1>
 
 <div class="container">
-  {% for post in posts %}
-    <form style="display:inline" action="/posts/{{ post.id }}/delete">
-    {{form.hidden_tag()}}
-    <div class="card" style="width: 15rem;">
-      <div class="card-body">
-        <a href="/buy" style="text-decoration: none;">
-          <img src="{{ post.photo_url }}" class="card-img-top text-info" alt="image">
-          <h5 id="title" class="card-title text-dark">{{ post.title }}</h5>
-        </a>
-        <p class="card-text">{{ post.caption }}</p>
-        <p class="card-time"><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
-            <button id="my-post-delete-btn" class="btn btn-outline-danger" formmethod="POST" formaction="/posts/{{ post.id }}/delete">❌</button>
-            <button id="my-post-shop-btn"><a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button>
-        </form>
-      </div>
-    </div>
-  {% else %}
-  <div class="col-12">No Favorited posts yet.</div>
+  {% for favorite in user.favorites %}
+  {{ favorite.title }}
+  {{ favorite.caption }}
+  <img src="{{ favorite.photo_url }}" class="card-img-top text-info" alt="image">
+  <p class="card-time"><small>By {{ favorite.user.full_name }} on {{ favorite.friendly_date }}</small></p>
+  <button id="my-post-shop-btn"><a href='{{ favorite.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button> 
   {% endfor %}
 </div>
 
