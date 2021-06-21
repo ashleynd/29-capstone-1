@@ -51,8 +51,11 @@ img {
 }
 
 #title {
-    margin: 9px;
     margin-top: 10px;
+}
+
+#card-title {
+    margin: 9px;
 }
 
 
@@ -82,7 +85,7 @@ img {
 /* ############################################################################# */
 /* # Like Buttons */
 
-#like-btn {
+/* #like-btn {
     background-color: #fffefb;
     padding: 5px 11px;
     margin: 8px;
@@ -116,7 +119,7 @@ img {
      background-color: #fffaca;
      box-shadow: 1px 4px 9px grey;
     -webkit-transition:  box-shadow .1s ease-in;
-}
+} */
 
 /* ############################################################################# */
 /* # Delete Buttons */
@@ -143,9 +146,9 @@ img {
 #my-post-delete-btn {
     background-color: #fffefb;
     margin: 3px;
-    margin-left: 53px;
     margin-top: 4px;
     margin-bottom: 9px;
+    margin-left: 20px;
     border: grey;
     padding: 9px 14px;
     box-shadow: 1px 3px 5px grey;
@@ -241,6 +244,25 @@ img {
 }
 
 /* ############################################################################# */
+/* # Edit Post Buttons */
+
+#edit-btn {
+    background-color: #fffefb;
+    color: black;
+    border: grey;
+    padding: 9px 11px;
+    box-shadow: 1px 3px 5px grey;
+    border-radius: 100px;
+    font-size: 15px;
+}
+
+#edit-btn:hover { 
+     background-color: #fffaca;
+     box-shadow: 1px 4px 9px grey;
+    -webkit-transition:  box-shadow .1s ease-in;
+}
+
+/* ############################################################################# */
 /* # Register/Login Buttons */
 
 #register-btn {
@@ -265,4 +287,3 @@ img {
      box-shadow: 1px 3px 8px grey;
     -webkit-transition:  box-shadow .1s ease-in;
 }
-

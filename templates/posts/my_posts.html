@@ -14,10 +14,11 @@
         <a href="{{ post.photo_url }}" style="text-decoration: none;" target="_blank">
           <img src="{{ post.photo_url }}" class="card-img-top text-info" alt="image">
         </a>
-          <h5 id="title" class="card-title text-dark">{{ post.title }}</h5>
+          <h5 id="card-title" class="card-title text-dark">{{ post.title }}</h5>
         <p class="card-text">{{ post.caption }}</p>
         <p class="card-time"><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
             <button id="my-post-delete-btn" class="btn btn-outline-danger" formmethod="POST" formaction="/posts/{{ post.id }}/delete">❌</button>
+            <button id="edit-btn" class="btn btn-outline-danger" formmethod="POST" formaction="/posts/{{ post.id }}/update">Update</button>
             <button id="shop-btn"><a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button>
         </form>
       </div>

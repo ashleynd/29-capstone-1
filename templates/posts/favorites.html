@@ -6,67 +6,23 @@
 
 <div class="container">
   {% for favorite in user.favorites %}
-  {{ favorite.title }}
-  {{ favorite.caption }}
-  <img src="{{ favorite.photo_url }}" class="card-img-top text-info" alt="image">
-  <p class="card-time"><small>By {{ favorite.user.full_name }} on {{ favorite.friendly_date }}</small></p>
-  <button id="my-post-shop-btn"><a href='{{ favorite.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button> 
-  {% endfor %}
+        <div class="card" style="width: 15rem;">
+          <div class="card-body">
+            <a href="{{ favorite.photo_url }}" style="text-decoration: none;" target="_blank">
+              <img src="{{ favorite.photo_url }}" class="card-img-top text-info" alt="image">
+            </a>
+              <h5 id="card-title" class="card-title text-dark">{{ favorite.title }}</h5>
+              <p class="card-text">{{ favorite.caption }}</p>
+              <p class="card-time"><small>By {{ favorite.user.full_name }} on {{ favorite.friendly_date }}</small></p>
+              <button id="like-btn" class="btn btn-outline-danger" formmethod="POST" formaction="/posts/{{ favorite.id }}/favorite">⭐️</button>
+              <button id="shop-btn"><a href='{{ favorite.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button> 
+            </div>
+          </div>
+      {% else %}
+      <div class="col-12">No posts yet.</div>
+      {% endfor %}
 </div>
-
-
-
-
-
-<!-- <div><button><a href="/add">New Post</a></button></div> -->
-
-<!-- <a href="/buy">
-<div class="row align-items-start">
-    <div class="row align-items-center">
-      <div class="col">
-        <div class="card" style="width: 16rem;">
-            <a href="/buy" style="text-decoration: none;">
-                <img src="https://64.media.tumblr.com/f1059781dfb0e2e6c451782cd28f8af4/tumblr_pfofmwODGQ1thgobq_1280.jpg" class="card-img-top text-info" alt="image">
-                <div class="card-body">
-                  <h5 id="title" class="card-title text-dark">Sunset views</h5>
-                </a>
-                  <p class="card-text">Sunset by their pier in California.</p>
-                  <a href="/like" id="like-btn-fav" class="btn btn-outline-info btn-sm">⭐️</a>
-                  <a href="https://www.minted.com/product/art/MIN-SJS-GOA/sorbet-sea?art_group=art_print&border=full_bleed&frame=white&framing=framed&material=standard&quantity=1&size=8x10&utm_content=18_fa_nco20&utm_medium=sem&utm_source=google&utm_sub=pla&utm_campaign=G_S_Art_Fine_PLA_USA_SmartShopping&utm_custom_a=FineArt&utm_custom_b=feed&utm_custom_c=shopping&utm_int=b&utm_keyword&utm_device=a&AudId=pla-949879342967&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9EB8GJfzVnlK6nd9yE-zBVOi19xDXnoAQL8k3POkk8FeT0ysQpWSsIaAqklEALw_wcB&color=A&shape=" id="shop-btn" class="btn btn-outline-info btn-sm" target="_blank">🛍</a>
-                </div>
-              </div>
-      </div>
-      <div class="col">
-        <div class="card" style="width: 16rem;">
-            <a href="/buy" style="text-decoration: none;">
-                <img src="https://64.media.tumblr.com/80d652f3a4b1ba9720004f725a31cc0b/tumblr_oldlnnhHD71vecsuao1_1280.png" class="card-img-top text-info" alt="image">
-                <div class="card-body">
-                  <h5 id="title" class="card-title text-dark">Rose blooms</h5>
-                </a>
-                  <p class="card-text">In full bloom for the season.</p>
-                  <a href="/like" id="like-btn-fav" class="btn btn-outline-info btn-sm">⭐️</a>
-                  <a href="https://www.heirloomroses.com/edentm.html" id="shop-btn" class="btn btn-outline-info btn-sm" target="_blank">🛍</a>
-                </div>
-              </div>
-      </div>
-      <div class="col">
-        <div class="card" style="width: 16rem;">
-            <a href="/buy" style="text-decoration: none;">
-                <img src="https://i.pinimg.com/originals/9f/67/9a/9f679ae88c12540649c90cb9caa038c0.jpg" class="card-img-top text-info" alt="image">
-                <div class="card-body">
-                  <h5 id="title" class="card-title text-dark">Pink clouds</h5>
-                </a>
-                  <p class="card-text">Already twilight time of the day.</p>
-                  <a href="/like" id="like-btn-fav" class="btn btn-outline-info btn-sm">⭐️</a>
-                  <a href="https://www.litfad.com/simple-cloud-wall-mural-decal-for-girls-bedroom-pastel-pink-personalized-size-available-s-261160.html?language=en&currency=USD&gclid=Cj0KCQjw5auGBhDEARIsAFyNm9FzMXB9iFOtO-Hnnn2PUz770nXFj9APPzO1g7NdYiyDyuu5oLYLigQaAqgDEALw_wcB" id="shop-btn" class="btn btn-outline-info btn-sm" target="_blank">🛍</a>
-                </div>
-              </div>
-      </div>
-    </div>
-    </div>
-  </div>
-</a> -->
-
+</div>
 
 
 {% endblock %}

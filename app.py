@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, session, flash, abort, url_for
 from flask_debugtoolbar import DebugToolbarExtension
-from models import Favorite, connect_db, db, User, Post
-from forms import RegisterForm, LoginForm, AddPostForm, EditPostForm, DeleteForm
+from models import connect_db, db, User, Post
+from forms import RegisterForm, LoginForm, AddPostForm, DeleteForm, EditPostForm
 import requests
 from sqlalchemy.exc import IntegrityError
 
@@ -126,8 +126,8 @@ def add_post():
     if form.validate_on_submit():
         # data = {k: v for k, v in form.data.items() if k != "csrf_token"}
         # new_post = Post(**data)
-        title = form.title.data
         # image = form.image.data
+        title = form.title.data
         photo_url = form.photo_url.data
         purchase_url = form.purchase_url.data
         caption = form.caption.data
@@ -147,7 +147,7 @@ def add_post():
 
 @app.route("/myposts")
 def my_posts():
-    """Page for posts the user created."""
+    """Page to show just the posts the user created."""
 
     if "user_id" not in session:
         flash("🚫 You must be logged in to create posts.")
@@ -158,26 +158,31 @@ def my_posts():
         posts = Post.query.filter(user_id==Post.user_id)
         form = DeleteForm()
         return render_template("/posts/my_posts.html", posts=posts, user_id=user_id, form=form)
-    
-
-# @app.route('/posts/<int:post_id>', methods=["GET"])
-# def posts_show(post_id):
-#     """Show a post."""
-
-#     p = Post.query.get(post_id)
-#     return render_template('posts/purchase_post.html', post=p)
 
 
-# @app.route("/buy")
-# def purchase_post():
-#     """Post with link to purchase."""
+@app.route("/posts/<int:post_id>/update", methods=["GET", "POST"])
+def update_post(post_id):
+    """Edit form for user's posts."""
 
-#     if "user_id" not in session:
-#         flash("You must be logged in to view!")
-#         return redirect("/")
+    post = Post.query.get(post_id)
 
-#     else:
-#         return render_template("/posts/purchase_post.html")
+    if "user_id" not in session:
+        flash("🚫 You must be logged in to edit posts.")
+        return redirect("/")
+
+    form = EditPostForm(obj=post)
+
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.photo_url = form.photo_url.data
+        post.purchase_url = form.purchase_url.data
+        post.caption = form.caption.data
+
+        db.session.commit()
+        flash(f"New post: {post.title} updated. 👍🏻")
+        return redirect("/myposts")
+
+    return render_template("posts/post_edit.html", form=form, post=post)
 
 #############################################################################
 # Delete Route
@@ -204,37 +209,31 @@ def delete_post(post_id):
 #############################################################################
 # Favorite Routes
 
-@app.route("/posts/<int:post_id>/favorite", methods=["POST"])
-def add_favorite(post_id):
-    """Favorite post."""
+# @app.route("/posts/<int:post_id>/favorite", methods=["POST"])
+# def add_favorite(post_id):
+#     """Favorite post."""
 
-    if "user_id" not in session:
-        flash("🚫 You must be logged in to favorite posts.")
-        return redirect("/")
+#     if "user_id" not in session:
+#         flash("🚫 You must be logged in to favorite posts.")
+#         return redirect("/")
 
-    # post_id = Post.query.get(post_id)
-    favorite = Favorite(user_id = session["user_id"], post_id=post_id)
-    db.session.add(favorite)
-    db.session.commit()
-    # flash(f"{favorite.title} added to Favorites. 👏🏻")
-    return redirect("/favorites")
+#     favorite = Favorite(user_id = session["user_id"], post_id=post_id)
+#     db.session.add(favorite)
+#     db.session.commit()
+#     return redirect("/favorites")
 
-@app.route("/favorites")
-def show_favorites():
-    """Page to show all the posts the user favorited."""
+# @app.route("/favorites")
+# def show_favorites():
+#     """Page to show all the posts the user favorited."""
 
-    if "user_id" not in session:
-        flash("🚫 You must be logged in to add favorites.")
-        return redirect("/")
+#     if "user_id" not in session:
+#         flash("🚫 You must be logged in to add favorites.")
+#         return redirect("/")
 
-    else:
-        user_id = session["user_id"]
-        # favorites = Favorite.query.filter(Favorite.user_id==user_id)
-        user = User.query.get_or_404(user_id)
-        # print('~~~~~~~~~~~~~~~~~~~~~')
-        # print(user)
-        # print('~~~~~~~~~~~~~~~~~~~~~')
-        return render_template("/posts/favorites.html", user=user)
+#     else:
+#         user_id = session["user_id"]
+#         user = User.query.get_or_404(user_id)
+#         return render_template("/posts/favorites.html", user=user)
 
 
 #############################################################################

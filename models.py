@@ -27,7 +27,7 @@ class User(db.Model):
     password = db.Column(db.Text, nullable=False)
 
     posts = db.relationship('Post', backref='user', cascade='all, delete-orphan')
-    favorites = db.relationship('Post', secondary="favorites")
+    # favorites = db.relationship('Post', secondary="favorites")
 
     def __repr__(self):
         return f"<User #{self.id}: {self.username}>"
@@ -95,12 +95,12 @@ class Post(db.Model):
     def __repr__(self):
         return f"<Post Info: {self.id} {self.title} {self.purchase_url} {self.caption} {self.user_id}>"
 
-class Favorite(db.Model):
-    """User post favorites."""
+# class Favorite(db.Model):
+#     """User post favorites."""
 
-    __tablename__ = 'favorites' 
+#     __tablename__ = 'favorites' 
 
-    id = db.Column(db.Integer, primary_key=True) 
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'))
-    post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='cascade'), unique=True)
+#     id = db.Column(db.Integer, primary_key=True) 
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='cascade'))
+#     post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='cascade'), unique=True)
 
