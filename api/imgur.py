@@ -19,9 +19,9 @@ client = ImgurClient(client_id, client_secret, access_token, refresh_token)
 # Extracts the items (images) on the front page of Imgur:
 items = client.gallery(section='hot', sort='viral', page=2, window='week', show_viral=False)
 for item in items:
-    # print(item.link)
+    print(item.link)
     # print(item.title)
-    print(items)
+    # print(items)
     # create jinja for loop to iterate through each one to make a card
 
 # Find the image on the front page that has the highest number of views 

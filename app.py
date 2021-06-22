@@ -2,8 +2,8 @@ from flask import Flask, render_template, redirect, session, flash, abort, url_f
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, db, User, Post
 from forms import RegisterForm, LoginForm, AddPostForm, DeleteForm, EditPostForm
-import requests
 from sqlalchemy.exc import IntegrityError
+
 
 app = Flask(__name__)
 

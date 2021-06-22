@@ -38,6 +38,3 @@ class EditPostForm(FlaskForm):
 class DeleteForm(FlaskForm):
     """Delete form."""
 
-# class FavoriteForm(FlaskForm):
-#     """Favorite form."""
-
