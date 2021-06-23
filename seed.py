@@ -158,6 +158,14 @@ amy5 = Post(
     user_id=1
 )
 
+amy6 = Post(
+    title="Red Ceramic Vase",
+    photo_url="https://ae01.alicdn.com/kf/HTB1bPqjKbSYBuNjSspiq6xNzpXax/Red-Ceramic-Vase-Blue-Wedding-Vase-Home-Decoration-Decoration-Gifts.jpg",
+    purchase_url="https://papashoppe.com/red-ceramic-vase-blue-wedding-vase-home-decoration-decoration-gifts/",
+    caption="Red decoration gifts.",
+    user_id=1
+)
+
 marvin1 = Post(
     title="Tokyo Chopstick",
     photo_url="https://cdn.shopify.com/s/files/1/0091/0707/9226/products/product-image-524241600.jpg?v=1568823983",
@@ -715,7 +723,7 @@ vanessa5, rachel5, amy3, marvin4, patty3, rose3, marvin2, violet8, gina1, molly5
 rachel1, violet2, patty9, vanessa2, mark2, marvin3, rose1, molly4, violet4, amy4,
 rose2, gina3, vanessa3, patty8, rose4, rose6, violet1, molly3, bob2, sarah4, rachel3,
 vanessa4, patty2, violet5, marvin1, rachel4, teddy2, mark3, patty7, violet3, teddy3, violet7, 
-gina2, molly2, patty1, bob1, rachel6, molly1])
+gina2, molly2, patty1, bob1, rachel6, molly1, amy6])
 
 db.session.commit()
 

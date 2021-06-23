@@ -88,3 +88,10 @@ pip3 install psycopg2
 
 HobbyDev info: (tier of the heroku plan)
 https://elements.heroku.com/addons/heroku-postgresql
+
+
+Used this to fix my heroku line in app.py:
+https://stackoverflow.com/questions/66690321/flask-and-heroku-sqlalchemy-exc-nosuchmoduleerror-cant-load-plugin-sqlalchemy
+
+Heroku commands:
+http://curric.rithmschool.com/springboard/lectures/flask-heroku/
