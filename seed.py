@@ -4,12 +4,12 @@ from flask.templating import Environment
 from models import db, User, Post
 from app import app
 
-
+# Create all tables
 db.drop_all()
 db.create_all()
 
-User.query.delete()
-Post.query.delete()
+# User.query.delete()
+# Post.query.delete()
 
 u1 = User(
     first_name="Amy",
