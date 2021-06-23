@@ -85,3 +85,6 @@ pip3 install -U Flask-SQLAlchemy
 pip3 install Flask-Bcrypt
 pip3 install Flask-WTF
 pip3 install psycopg2
+
+HobbyDev info: (tier of the heroku plan)
+https://elements.heroku.com/addons/heroku-postgresql
