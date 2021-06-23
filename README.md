@@ -55,3 +55,45 @@ https://www.w3schools.com/tags/tag_iframe.asp
 3. Time permitting, it would also be fun to make a dark mode toggle. So the user can choose between a light and dark mode.
 
 
+## CAPSTONE 1 PROJECT: SUBMISSION UPDATES
+
+#### Details
+Title of site: Picslink
+
+URL: https://picslink.herokuapp.com/
+
+My website is an online image-sharing community meant for users to post images and links to where the items i the picture are sold.
+Users can upload pictures, add captions, and it includes a button that leads you to where you purchase the item. Without logging in, you can see other users posts on the public feed. When you login, you have access to create your own posts and edit/delete/sahre your own posts.
+
+#### Features
+1. Login/Logout/Registration. Users can login and register by adding in their name and username and password.
+2. Post. Where users can post photos, add a caption, then share publicly. 
+3. Feed. You post will be added to the main feed where other users can view it.
+4. Delete/Edit post. You can delete and edit your own posts you created.
+5. Puchase path. Button on each post to lead the user to the page where you can purchase the item in the post.
+
+#### User Flow
+
+1. User first sees the main home page feed. Which is populated by other user's posts. You can click on the image or the link in each post to see more information on the item.
+2. User can login/register. 
+3. Once logged in, you can view other users posts in the "Feed tab".
+4. You can also create your own post in "New Post" tab. There, you find another shopping ad online, include the url of that page, and image address from that page, and input it into the form. Then click "submit".
+5. You image will appear in "My Posts" tab. Where you are able to delete it, edit it, or view its purchase link. 
+6. Your post also appears in the "Feed" tab so all other users can view it, logged in or not logged in.
+7. Logout button is on the right side of the navbar, when user is ready to log out.
+
+#### API Update
+
+I included all the data I gathered from the API. But decided to use only data that users have input in themselves. 
+If time allows in the future, I can populate my website with Imgur API data.
+
+#### Technology Stack used
+1. Python
+2. HTML/CSS
+3. Flask
+4. WTForms
+5. Heroku
+
+#### Final Thoughts
+
+It is a very simple website for now. In the future, I hope to be able to implement favorting capabilities, commenting, and organizing items into different folders.
