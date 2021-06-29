@@ -17,6 +17,7 @@ client = ImgurClient(client_id, client_secret, access_token, refresh_token)
 
 
 # Extracts the items (images) on the front page of Imgur:
+# PROBLEM = I'm able to get the links, but not make it appear on the page with a  Jinja template.
 items = client.gallery(section='hot', sort='viral', page=2, window='week', show_viral=False)
 for item in items:
     print(item.link)

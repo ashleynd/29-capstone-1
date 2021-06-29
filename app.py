@@ -209,6 +209,9 @@ def delete_post(post_id):
 #############################################################################
 # Favorite Routes
 
+# THE ISSUE:
+# When one user Favorites a post, then another user cannot Favorite that post.
+
 # @app.route("/posts/<int:post_id>/favorite", methods=["POST"])
 # def add_favorite(post_id):
 #     """Favorite post."""
