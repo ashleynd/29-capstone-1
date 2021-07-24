@@ -244,4 +244,4 @@ def delete_post(post_id):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('/templates/404.html'), 404
+    return render_template('/posts/404.html'), 404
