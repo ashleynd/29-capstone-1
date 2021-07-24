@@ -17,6 +17,7 @@
               <p class="card-time"><small>By {{ post.user.full_name }} on {{ post.friendly_date }}</small></p>
                 <!-- <button id="like-btn" class="btn btn-outline-danger" formmethod="POST" formaction="/posts/{{ post.id }}/favorite">⭐️</button> -->
               <button id="shop-btn-public"><a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;">🛍</a></button>
+              <!-- <a href='{{ post.purchase_url }}' target="_blank" style="text-decoration: none;"><button id="shop-btn-public">🛍</button></a> -->
             </form>
             </div>
           </div>
@@ -27,3 +28,4 @@
 </div>
 
 {% endblock %}
+
