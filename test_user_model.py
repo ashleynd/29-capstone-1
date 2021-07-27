@@ -8,6 +8,8 @@
 import os
 from unittest import TestCase
 from sqlalchemy import exc
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 from models import db, User, Post
 
